@@ -1,19 +1,19 @@
 # ⚡ 6 Days PLC Training
 
-Welcome to the **6 Days PLC (Programmable Logic Controller) Training** repository! This repository contains daily modules, exercises, ladder logic programs, and documentation created during the intensive 6-day industrial automation training.
+Welcome to the official repository for the **6 Days PLC (Programmable Logic Controller) Industrial Automation Training**! This repository serves as a complete reference containing concept summaries, instructor teaching guides, ladder/ST code examples, project tasks, and solutions.
 
 ---
 
 ## 📁 Repository Structure
 
-```
+```text
 6-days-plc-training-/
-├── day1/           # Day 1: Introduction to PLC & Hardware Architecture
-├── day2/           # Day 2: Basic Ladder Logic & Bit Logic Instructions
-├── day3/           # Day 3: Timers, Counters & Comparator Operations
+├── day1/           # Day 1: Foundations (PLC Hardware, Scan Cycle, NO/NC, Seal-In, Interlocks)
+├── day2/           # Day 2: Timers, Counters, Edge Detection, Troubleshooting & Traffic Light State Machine
+├── day3/           # Day 3: Analog & Data (4-20mA, ADC Scaling, Data Types, Temperature Event Logging)
 ├── day4/           # Day 4: Advanced Data Handling & Math Operations
 ├── day5/           # Day 5: HMI Integration & Sensor / Actuator Interfaces
-├── day6/           # Day 6: Industrial Automation Project & Case Studies
+├── day6/           # Day 6: Capstone Automation Project & Case Studies
 ├── CONTRIBUTORS.md # Project Contributors List
 └── README.md       # Main Documentation
 ```
@@ -22,27 +22,41 @@ Welcome to the **6 Days PLC (Programmable Logic Controller) Training** repositor
 
 ## 👥 Contributors
 
-We would like to acknowledge and thank all the contributors who participated and contributed to this training program:
+We acknowledge and celebrate the contributions of our team members:
 
-| Avatar / Name | GitHub Profile |
-| :--- | :--- |
-| **A.M Jafrein** | [@Jafrein](https://github.com/Jafrein) |
-| **M Vaishnavi** | [@robo-maker-glitch](https://github.com/robo-maker-glitch) |
-| **Amin Ahmed G** | [@Amin-Ahmed-G](https://github.com/Amin-Ahmed-G) |
-
----
-
-## 📅 Training Schedule & Modules
-
-- [x] **[Day 1](day1/)** - Introduction to PLC Architecture, Input/Output Modules & Wiring
-- [x] **[Day 2](day2/)** - Ladder Logic Fundamentals (NO/NC Contacts, Coils, Latching)
-- [x] **[Day 3](day3/)** - Timers (TON, TOF, TP) & Counters (CTU, CTD)
-- [x] **[Day 4](day4/)** - Data Manipulation, Math Instructions & Analog Scaling
-- [x] **[Day 5](day5/)** - HMI Design, Alarm Handling & Sensor Integration
-- [x] **[Day 6](day6/)** - Capstone Automation Project & Hands-on Implementation
+| Contributor | GitHub Profile | Role |
+| :--- | :--- | :--- |
+| **A.M Jafrein** | [@Jafrein](https://github.com/Jafrein) | Co-Author & Contributor |
+| **M Vaishnavi** | [@robo-maker-glitch](https://github.com/robo-maker-glitch) | Co-Author & Contributor |
+| **Amin Ahmed G** | [@Amin-Ahmed-G](https://github.com/Amin-Ahmed-G) | Maintainer & Lead Contributor |
 
 ---
 
-## 📜 License
+## 📅 Course Syllabus & Modules
 
-This repository is maintained for educational and training purposes.
+### 📘 [Day 1 — PLC Foundations](day1/)
+- **Concepts**: PLC Architecture, Power Supply (24V DC), Relay vs Transistor vs Triac output selection, PLC Scan Cycle (Input Scan $\rightarrow$ Logic Solve $\rightarrow$ Output Update), NO/NC Contacts, Fail-Safe E-Stop wiring.
+- **Projects**: Two-button AND/OR logic, Motor Start/Stop with Seal-In Circuit, Forward/Reverse Interlock.
+
+### 📙 [Day 2 — Timers, Counters & Troubleshooting](day2/)
+- **Concepts**: Timers (TON, TOF, RTO), Counters (CTU, CTD, CTUD), Edge Detection (ONS / R_TRIG / F_TRIG), Online Monitoring, Forcing I/O, Fault Triage Order.
+- **Projects**: Debounce Counter, 17 Student Tasks & Instructor Solutions, 3-Phase Traffic Light State Machine (INT State + EQU vs BOOL Bits).
+
+### 📗 [Day 3 — Analog & Data Processing](day3/)
+- **Concepts**: 4–20mA (Live Zero) vs 0–10V, 10-bit / 12-bit ADC raw counts, Universal Scaling Formula, `NORM_X` / `SCALE_X` / `SCL`, Divide-by-zero guards, Data Types (`BOOL`, `INT`, `DINT`, `REAL`, `ARRAY`), IEEE 754 floating-point `EQ` bugs.
+- **Projects**: Temperature Monitoring System, One-shot Alarm Event Logging, 2°C Dead-Band Hysteresis, 3-Sample Moving Average FIFO Filter.
+
+### 📕 [Day 4 — Advanced Data Handling & Math](day4/)
+- **Concepts**: Data transfer (`MOV`, `BLKMOV`), Array processing, `FOR` loops in Structured Text, Signal clamping (`MIN`, `MAX`, `LIMIT`).
+
+### 📓 [Day 5 — HMI Integration & Field Devices](day5/)
+- **Concepts**: HMI Tag Binding, Screen Design, Alarm Banners, Proximity Sensors, VFDs, Relays, Solenoid Actuators.
+
+### 🎓 [Day 6 — Industrial Capstone Project](day6/)
+- **Projects**: Automated Conveyor Belt Sorting System / Industrial Tank Multi-Stage Level Control.
+
+---
+
+## 📜 License & Usage
+
+This repository is maintained for educational and industrial automation training purposes.

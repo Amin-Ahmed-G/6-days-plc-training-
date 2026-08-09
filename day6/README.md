@@ -1,10 +1,23 @@
-# Day 6: Capstone Automation Project & Industrial Case Studies
+# Day 6 — Industrial Automation Capstone Project
 
-## Overview
-Day 6 is dedicated to full industrial automation case studies:
-- Conveyor Belt Sorting System / Traffic Light Controller / Water Level Control
-- Fault Detection, Emergency Stop (E-Stop) Logic & Safety Interlocks
-- Final Project Presentation & Performance Testing
+## 📖 Capstone Project Overview
 
-## Folder Contents
-- Place Day 6 final capstone project code, diagrams, and documentation here.
+Day 6 is dedicated to a complete industrial automation capstone implementation combining all concepts covered during the 6-day course:
+1. **Safety Interlocks & E-Stop Hardware Architecture**
+2. **State Machine Sequencer Logic**
+3. **Analog Scaling & Closed-Loop Control**
+4. **HMI Interface & Alarm Management**
+
+---
+
+## 🏗️ Capstone Project Options
+
+### Option A: Automated Conveyor Sorting System
+- **Inputs**: Optical part sensor, metal proximity sensor, weight load cell (analog $4-20\text{mA}$).
+- **Outputs**: Conveyor motor, pneumatic divert arm, status tower light.
+- **Features**: Batch counting, reject accumulation, HMI speed control.
+
+### Option B: Multi-Stage Industrial Tank Level Control
+- **Inputs**: Hydrostatic level sensor ($0-10\text{V}$ analog), High/Low level float switches.
+- **Outputs**: Inlet valve solenoid, discharge pump (VFD speed controlled).
+- **Features**: Lead/lag pump switching, low-level dry-run protection, alarm log.

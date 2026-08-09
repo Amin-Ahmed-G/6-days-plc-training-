@@ -1,11 +1,12 @@
-# Day 5: HMI Integration & Sensor / Actuator Interfaces
+# Day 5 — HMI Integration & Sensor / Actuator Interfaces
 
-## Overview
-Day 5 explores Human-Machine Interface (HMI) integration and physical devices:
-- Connecting PLC to HMI Touch Panels
-- Tag Mapping (Internal Memory Bits, Data Blocks)
-- Alarm Management, Trend Display, and Manual/Auto Mode Switches
-- Interfacing Proximity Sensors, Limit Switches, and Relay Output Actuators
+## 📖 Concept Summary & Technical Guide
 
-## Folder Contents
-- Place Day 5 HMI screen design files and PLC communication tags here.
+### 1. HMI Design & Communication
+- **Human-Machine Interface (HMI)** tag binding to PLC memory addresses.
+- Pushbuttons, indicator lamps, numerical entry, and trend graphs.
+- **Alarm Banners & Event Management**: Active alarm acknowledgement, alarm history, and severity classification.
+
+### 2. Physical Sensor & Actuator Integration
+- Proximity sensors (Inductive, Capacitive, Optical), Limit Switches, and Rotary Encoders.
+- Relays, Contactors, Solenoid Valves, and Variable Frequency Drives (VFDs).
