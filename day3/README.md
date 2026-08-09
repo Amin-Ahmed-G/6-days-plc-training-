@@ -355,16 +355,16 @@ END_PROGRAM
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
-| Task 1 | Derive scaling formula from first principles for 4-20mA → 0-100°C | ⭐⭐ Intermediate |
-| Task 2 | Calculate EU for Raw=750, 0-1023 → -20 to 80°C | ⭐⭐ Intermediate |
-| Task 3 | Implement NORM_X + SCALE_X in a ladder rung | ⭐⭐ Intermediate |
-| Task 4 | Build arithmetic rung: convert ScaledTemp_C to Fahrenheit | ⭐⭐ Intermediate |
-| Task 5 | Add division guard to average of 3 sensor values | ⭐⭐ Intermediate |
-| Task 6 | Explain why EQ comparison on REAL can fail. Show example | ⭐⭐ Intermediate |
-| Task 7 | Implement 3°C dead-band hysteresis alarm for process at 75°C | ⭐⭐⭐ Advanced |
-| Task 8 | Build R_TRIG-triggered alarm event log with circular buffer | ⭐⭐⭐ Advanced |
-| Task 9 | Implement 5-sample moving average filter as ST code | ⭐⭐⭐ Advanced |
-| Task 10 | Full project: build Temperature Monitor from sensor to log | ⭐⭐⭐ Advanced |
+| Task 1 | Derive scaling formula from first principles for 4-20mA -> 0-100C | Intermediate |
+| Task 2 | Calculate EU for Raw=750, 0-1023 -> -20 to 80C | Intermediate |
+| Task 3 | Implement NORM_X + SCALE_X in a ladder rung | Intermediate |
+| Task 4 | Build arithmetic rung: convert ScaledTemp_C to Fahrenheit | Intermediate |
+| Task 5 | Add division guard to average of 3 sensor values | Intermediate |
+| Task 6 | Explain why EQ comparison on REAL can fail. Show example | Intermediate |
+| Task 7 | Implement 3C dead-band hysteresis alarm for process at 75C | Advanced |
+| Task 8 | Build R_TRIG-triggered alarm event log with circular buffer | Advanced |
+| Task 9 | Implement 5-sample moving average filter as ST code | Advanced |
+| Task 10 | Full project: build Temperature Monitor from sensor to log | Advanced |
 
 ---
 
@@ -372,7 +372,8 @@ END_PROGRAM
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 3 complete reference |
+| [`README.md`](README.md) | This document - Day 3 complete reference |
+| [`temperature.project`](temperature.project) | CODESYS project: Temperature monitoring system simulation |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 3 ladder diagrams |
 | [`Day3_Analog_and_Data_Teaching_Material.md`](Day3_Analog_and_Data_Teaching_Material.md) | Full instructor session notes |
 | [`Temperature_Monitor.st`](Temperature_Monitor.st) | Temperature monitoring system ST source code |

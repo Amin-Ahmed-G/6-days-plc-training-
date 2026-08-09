@@ -321,18 +321,18 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
-| Task 1 | Label all PLC panel components on a given diagram | ⭐ Beginner |
-| Task 2 | Select output module type for 3 given load scenarios | ⭐ Beginner |
-| Task 3 | Trace a scan cycle: predict which output activates first | ⭐⭐ Intermediate |
-| Task 4 | Wire a push-button to an input terminal and verify in I/O monitor | ⭐⭐ Intermediate |
-| Task 5 | Build AND logic (PB1 + PB2 → Lamp), test | ⭐⭐ Intermediate |
-| Task 6 | Build OR logic (PB1 OR PB2 → Lamp), test | ⭐⭐ Intermediate |
-| Task 7 | Explain E-stop wiring fault analysis table | ⭐⭐ Intermediate |
-| Task 8 | Build Motor Start/Stop seal-in circuit, test, trace | ⭐⭐ Intermediate |
-| Task 9 | Add run-indicator lamp to motor circuit | ⭐⭐ Intermediate |
-| Task 10 | Build Forward/Reverse with interlock, test both directions | ⭐⭐⭐ Advanced |
-| Task 11 | Prove interlock works: press both buttons simultaneously | ⭐⭐⭐ Advanced |
-| Task 12 | Convert motor seal-in ladder to Structured Text | ⭐⭐⭐ Advanced |
+| Task 1 | Label all PLC panel components on a given diagram | Beginner |
+| Task 2 | Select output module type for 3 given load scenarios | Beginner |
+| Task 3 | Trace a scan cycle: predict which output activates first | Intermediate |
+| Task 4 | Wire a push-button to an input terminal and verify in I/O monitor | Intermediate |
+| Task 5 | Build AND logic (PB1 + PB2 -> Lamp), test | Intermediate |
+| Task 6 | Build OR logic (PB1 OR PB2 -> Lamp), test | Intermediate |
+| Task 7 | Explain E-stop wiring fault analysis table | Intermediate |
+| Task 8 | Build Motor Start/Stop seal-in circuit, test, trace | Intermediate |
+| Task 9 | Add run-indicator lamp to motor circuit | Intermediate |
+| Task 10 | Build Forward/Reverse with interlock, test both directions | Advanced |
+| Task 11 | Prove interlock works: press both buttons simultaneously | Advanced |
+| Task 12 | Convert motor seal-in ladder to Structured Text | Advanced |
 
 ---
 
@@ -340,7 +340,9 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 1 complete reference |
+| [`README.md`](README.md) | This document - Day 1 complete reference |
+| [`Motor.project`](Motor.project) | CODESYS project: Motor forward-reverse seal-in (built and simulated) |
+| [`example.project`](example.project) | CODESYS project: Day 1 logic practice example |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 1 ladder diagrams (ASCII + descriptions) |
 | [`Motor_SealIn_Circuit.st`](Motor_SealIn_Circuit.st) | Structured Text source code |
 | [`Day1_Foundations_Teaching_Material.md`](Day1_Foundations_Teaching_Material.md) | Full instructor session notes |

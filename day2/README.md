@@ -366,23 +366,23 @@ END_CASE;
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
-| Task 1 | Trace TON timing: Start_PB held 6s, PT=5s. Draw ET and Q | ⭐ Beginner |
-| Task 2 | Trace TON: Start_PB held 3s, PT=5s. Why doesn't Q assert? | ⭐ Beginner |
-| Task 3 | Build cooling fan TOF circuit, test | ⭐⭐ Intermediate |
-| Task 4 | Quiz: Which timer delays on rising edge? Which on falling? | ⭐ Beginner |
-| Task 5 | CTU with PV=10. What is CV after 12 pulses? What is Q? | ⭐ Beginner |
-| Task 6 | Build counter without ONS. Prove double-counting at scan level | ⭐⭐ Intermediate |
-| Task 7 | Explain CTU RESET vs CTD LOAD — why asymmetric? | ⭐⭐ Intermediate |
-| Task 8 | Build edge-triggered batch counter: sensor→ONS→CTU→BatchDone | ⭐⭐ Intermediate |
-| Task 9 | State the correct fault triage order and justify it | ⭐⭐ Intermediate |
-| Task 10 | Force input HIGH to isolate: is fault in sensor or program? | ⭐⭐ Intermediate |
-| Task 11 | Why can't you track shift motor run-time with TON? | ⭐⭐ Intermediate |
-| Task 12 | Identify 3 planted faults in a provided PLC program | ⭐⭐⭐ Advanced |
-| Task 13 | Build debounce counter: sensor must be HIGH 3s before counting | ⭐⭐⭐ Advanced |
-| Task 14 | Build Traffic Light controller (3-state, 3 timers) | ⭐⭐⭐ Advanced |
-| Task 15 | Add pedestrian interrupt — how do you handle timer cleanup? | ⭐⭐⭐ Advanced |
-| Task 16 | Explain missing RES bug — what happens on second cycle? | ⭐⭐⭐ Advanced |
-| Task 17 | Convert Traffic Light to Structured Text CASE statement | ⭐⭐⭐ Advanced |
+| Task 1 | Trace TON timing: Start_PB held 6s, PT=5s. Draw ET and Q | Beginner |
+| Task 2 | Trace TON: Start_PB held 3s, PT=5s. Why doesn't Q assert? | Beginner |
+| Task 3 | Build cooling fan TOF circuit, test | Intermediate |
+| Task 4 | Quiz: Which timer delays on rising edge? Which on falling? | Beginner |
+| Task 5 | CTU with PV=10. What is CV after 12 pulses? What is Q? | Beginner |
+| Task 6 | Build counter without ONS. Prove double-counting at scan level | Intermediate |
+| Task 7 | Explain CTU RESET vs CTD LOAD - why asymmetric? | Intermediate |
+| Task 8 | Build edge-triggered batch counter: sensor->ONS->CTU->BatchDone | Intermediate |
+| Task 9 | State the correct fault triage order and justify it | Intermediate |
+| Task 10 | Force input HIGH to isolate: is fault in sensor or program? | Intermediate |
+| Task 11 | Why can't you track shift motor run-time with TON? | Intermediate |
+| Task 12 | Identify 3 planted faults in a provided PLC program | Advanced |
+| Task 13 | Build debounce counter: sensor must be HIGH 3s before counting | Advanced |
+| Task 14 | Build Traffic Light controller (3-state, 3 timers) | Advanced |
+| Task 15 | Add pedestrian interrupt - how do you handle timer cleanup? | Advanced |
+| Task 16 | Explain missing RES bug - what happens on second cycle? | Advanced |
+| Task 17 | Convert Traffic Light to Structured Text CASE statement | Advanced |
 
 ---
 
@@ -390,7 +390,11 @@ END_CASE;
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 2 complete reference |
+| [`README.md`](README.md) | This document - Day 2 complete reference |
+| [`CTU.project`](CTU.project) | CODESYS project: CTU counter simulation |
+| [`triggers.project`](triggers.project) | CODESYS project: Edge-trigger (R_TRIG/F_TRIG) simulation |
+| [`Traffic_Light.project`](Traffic_Light.project) | CODESYS project: Traffic light controller simulation |
+| [`Traffic_Light_v2.project`](Traffic_Light_v2.project) | CODESYS project: Traffic light v2 (pedestrian interrupt revision) |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 2 ladder diagrams |
 | [`Day2_Timers_Counters_Troubleshooting_Teaching_Material.md`](Day2_Timers_Counters_Troubleshooting_Teaching_Material.md) | Full instructor session notes |
 | [`Traffic_Light_Controller.st`](Traffic_Light_Controller.st) | Traffic Light ST source code |
