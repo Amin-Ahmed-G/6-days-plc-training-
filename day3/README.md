@@ -1,27 +1,27 @@
-# 📗 Day 3 — Analog I/O, Scaling & Data Processing
+# Day 3 - Analog I/O, Scaling & Data Processing
 
-> **"Reading the physical world: temperature, pressure, and level — in engineering units"**
+> "Reading the physical world: temperature, pressure, and level - in engineering units"
 
 **Duration**: 7 Hours | **Format**: 45% Lecture/Demo + 55% Hands-On Lab
 **Prerequisite**: Day 2 — Timers, Counters & Fault Diagnosis
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 3, you will be able to:
-- ✅ Explain why 4–20mA is preferred over 0–10V for industrial applications
-- ✅ Calculate engineering units from raw ADC counts using the scaling formula
-- ✅ Implement `NORM_X`/`SCALE_X` and `SCL` scaling instructions in a PLC program
-- ✅ Apply arithmetic instructions with correct division-by-zero guards
-- ✅ Select correct data types (BOOL/INT/DINT/REAL) for a given variable
-- ✅ Implement alarm hysteresis (dead-band) logic to prevent contact chatter
-- ✅ Build a 3-sample FIFO moving average filter for noisy analog signals
-- ✅ Build a complete temperature monitoring system from sensor to alarm log
+- Explain why 4-20mA is preferred over 0-10V for industrial applications
+- Calculate engineering units from raw ADC counts using the scaling formula
+- Implement NORM_X/SCALE_X and SCL scaling instructions in a PLC program
+- Apply arithmetic instructions with correct division-by-zero guards
+- Select correct data types (BOOL/INT/DINT/REAL) for a given variable
+- Implement alarm hysteresis (dead-band) logic to prevent contact chatter
+- Build a 3-sample FIFO moving average filter for noisy analog signals
+- Build a complete temperature monitoring system from sensor to alarm log
 
 ---
 
-## 📡 1. Analog Signal Theory
+## 1. Analog Signal Theory
 
 ### 1.1 The 4–20mA Current Loop
 
@@ -69,7 +69,7 @@ An **Analog-to-Digital Converter (ADC)** on the input module samples the analog 
 
 ---
 
-## 📐 2. Analog Scaling
+## 2. Analog Scaling
 
 ### 2.1 Universal Scaling Formula
 
@@ -133,7 +133,7 @@ Power Rail (+)                                                              Powe
 
 ---
 
-## ➕ 3. Arithmetic Instructions
+## 3. Arithmetic Instructions
 
 ### 3.1 Standard Math Operations
 
@@ -167,7 +167,7 @@ END_IF;
 
 ---
 
-## 🔢 4. Data Types
+## 4. Data Types
 
 ### 4.1 Data Type Selection Reference
 
@@ -207,7 +207,7 @@ AverageTemp := INT_TO_REAL(RawCount); // explicit conversion function
 
 ---
 
-## 🌡️ 5. Day 3 Project — Temperature Monitoring & Event Logging System
+## 5. Day 3 Project - Temperature Monitoring & Event Logging System
 
 ### 5.1 System Architecture
 
@@ -351,7 +351,7 @@ END_PROGRAM
 
 ---
 
-## 📝 Day 3 Assessment Tasks
+## Day 3 Assessment Tasks
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
@@ -368,7 +368,7 @@ END_PROGRAM
 
 ---
 
-## 📂 Day 3 Files
+## Day 3 Files
 
 | File | Description |
 |:---|:---|

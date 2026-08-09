@@ -1,25 +1,25 @@
-# 📓 Day 5 — HMI Design, VFD Integration & PID Control
+# Day 5 - HMI Design, VFD Integration & PID Control
 
-> **"Closing the loop: operator interfaces, variable-speed drives, and process control"**
+> "Closing the loop: operator interfaces, variable-speed drives, and process control"
 
 **Duration**: 7 Hours | **Format**: 40% Lecture/Demo + 60% Hands-On Lab
 **Prerequisite**: Day 4 — Advanced Instructions
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 5, you will be able to:
-- ✅ Configure HMI tag bindings to PLC memory and build functional operator screens
-- ✅ Design alarm management with severity classification and acknowledgement logic
-- ✅ Wire and configure a VFD for digital I/O and analog speed reference from a PLC
-- ✅ Explain P, I, and D terms in a PID controller and their effect on loop behavior
-- ✅ Configure a PLC PID instruction block for a water level control application
-- ✅ Perform basic manual PID tuning using step-response observation
+- Configure HMI tag bindings to PLC memory and build functional operator screens
+- Design alarm management with severity classification and acknowledgement logic
+- Wire and configure a VFD for digital I/O and analog speed reference from a PLC
+- Explain P, I, and D terms in a PID controller and their effect on loop behavior
+- Configure a PLC PID instruction block for a water level control application
+- Perform basic manual PID tuning using step-response observation
 
 ---
 
-## 🖥️ 1. HMI Design Fundamentals
+## 1. HMI Design Fundamentals
 
 ### 1.1 What is an HMI?
 
@@ -69,7 +69,7 @@ Tag binding maps PLC memory addresses to HMI screen objects:
 
 ---
 
-## 🔔 2. Alarm Management
+## 2. Alarm Management
 
 ### 2.1 Alarm Severity Classification
 
@@ -119,7 +119,7 @@ END_IF;
 
 ---
 
-## ⚡ 3. Variable Frequency Drive (VFD) Integration
+## 3. Variable Frequency Drive (VFD) Integration
 
 ### 3.1 VFD Operating Principle
 
@@ -185,7 +185,7 @@ Common VFD faults and their causes:
 
 ---
 
-## 🔄 4. PID Control
+## 4. PID Control
 
 ### 4.1 Closed-Loop Control Concept
 
@@ -244,7 +244,7 @@ PID_Level(
 
 ---
 
-## 🚿 5. Day 5 Project — Pump Speed Control System
+## 5. Day 5 Project - Pump Speed Control System
 
 ### 5.1 System Description
 
@@ -309,7 +309,7 @@ VFD_Speed_Raw := REAL_TO_INT(PumpSpeed_pct / 100.0 * 27648.0);
 
 ---
 
-## 📝 Day 5 Assessment Tasks
+## Day 5 Assessment Tasks
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
@@ -324,7 +324,7 @@ VFD_Speed_Raw := REAL_TO_INT(PumpSpeed_pct / 100.0 * 27648.0);
 
 ---
 
-## 📂 Day 5 Files
+## Day 5 Files
 
 | File | Description |
 |:---|:---|

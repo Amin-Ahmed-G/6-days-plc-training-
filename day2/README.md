@@ -1,26 +1,26 @@
-# 📙 Day 2 — Timers, Counters & Fault Diagnosis
+# Day 2 - Timers, Counters & Fault Diagnosis
 
-> **"Time-based and count-based industrial control, plus reading a live PLC"**
+> "Time-based and count-based industrial control, plus reading a live PLC"
 
 **Duration**: 7 Hours | **Format**: 50% Lecture/Demo + 50% Hands-On Lab
 **Prerequisite**: Day 1 — PLC Foundations & Basic Ladder Logic
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 2, you will be able to:
-- ✅ Correctly configure TON, TOF, and RTO timers from timing diagrams and application requirements
-- ✅ Implement CTU and CTD counters with edge detection for production batch counting
-- ✅ Explain why ONS/R_TRIG is critical and prove it at the scan level
-- ✅ Navigate a live PLC in online monitoring mode and interpret rung status
-- ✅ Force digital I/O for hardware/software fault isolation
-- ✅ Follow the correct fault triage order (CPU → module → logic)
-- ✅ Build a 3-phase Traffic Light Controller using a state machine pattern
+- Correctly configure TON, TOF, and RTO timers from timing diagrams and application requirements
+- Implement CTU and CTD counters with edge detection for production batch counting
+- Explain why ONS/R_TRIG is critical and prove it at the scan level
+- Navigate a live PLC in online monitoring mode and interpret rung status
+- Force digital I/O for hardware/software fault isolation
+- Follow the correct fault triage order (CPU → module → logic)
+- Build a 3-phase Traffic Light Controller using a state machine pattern
 
 ---
 
-## ⏱️ 1. Timer Instructions
+## 1. Timer Instructions
 
 ### 1.1 TON — Timer On-Delay
 
@@ -148,7 +148,7 @@ Power Rail (+)                                                    Power Rail (-)
 
 ---
 
-## 🔢 2. Counter Instructions
+## 2. Counter Instructions
 
 ### 2.1 CTU — Count Up
 
@@ -214,7 +214,7 @@ PreviousInput := CurrentInput;            // store for next scan comparison
 
 ---
 
-## 🔍 3. Online Monitoring & Fault Diagnosis
+## 3. Online Monitoring & Fault Diagnosis
 
 ### 3.1 Online Monitoring
 
@@ -265,7 +265,7 @@ Step 3: ONLINE LOGIC MONITORING
 
 ---
 
-## 🚦 4. Day 2 Project — Traffic Light State Machine
+## 4. Day 2 Project - Traffic Light State Machine
 
 ### 4.1 State Machine Design
 
@@ -362,7 +362,7 @@ END_CASE;
 
 ---
 
-## 📝 Day 2 Assessment Tasks (Tasks 1–17)
+## Day 2 Assessment Tasks (Tasks 1-17)
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
@@ -386,7 +386,7 @@ END_CASE;
 
 ---
 
-## 📂 Day 2 Files
+## Day 2 Files
 
 | File | Description |
 |:---|:---|

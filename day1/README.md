@@ -1,26 +1,26 @@
-# 📘 Day 1 — PLC Foundations & Basic Ladder Logic
+# Day 1 - PLC Foundations & Basic Ladder Logic
 
-> **"From relay panels to stored-program industrial computers"**
+> "From relay panels to stored-program industrial computers"
 
 **Duration**: 7 Hours | **Format**: 60% Lecture/Demo + 40% Hands-On Lab
 **Standard**: IEC 61131-3 | **Platform**: Siemens S7-1200 / Allen-Bradley CompactLogix
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 1, you will be able to:
-- ✅ Label and explain every major component in a PLC hardware panel
-- ✅ Calculate correct wire sizing and protection for 24V DC I/O circuits
-- ✅ Select the correct digital output module type (relay/transistor/triac) for a given load
-- ✅ Describe all 3 phases of the PLC scan cycle and predict I/O timing behavior
-- ✅ Write and interpret ladder logic rungs for AND, OR, NOT, SET, and RESET operations
-- ✅ Implement a motor Start/Stop circuit with Seal-In and a Forward/Reverse interlock
-- ✅ Explain and demonstrate fail-safe NC E-stop wiring
+- Label and explain every major component in a PLC hardware panel
+- Calculate correct wire sizing and protection for 24V DC I/O circuits
+- Select the correct digital output module type (relay/transistor/triac) for a given load
+- Describe all 3 phases of the PLC scan cycle and predict I/O timing behavior
+- Write and interpret ladder logic rungs for AND, OR, NOT, SET, and RESET operations
+- Implement a motor Start/Stop circuit with Seal-In and a Forward/Reverse interlock
+- Explain and demonstrate fail-safe NC E-stop wiring
 
 ---
 
-## 📖 1. Introduction to PLCs
+## 1. Introduction to PLCs
 
 ### 1.1 What is a PLC?
 
@@ -74,7 +74,7 @@ The 24V DC standard is used for field-side I/O for three reasons:
 
 ---
 
-## ⚙️ 2. Digital I/O Modules
+## 2. Digital I/O Modules
 
 ### 2.1 Digital Input Module Electrical Behavior
 
@@ -107,7 +107,7 @@ A digital input module converts a physical voltage at its terminal into a logic 
 
 ---
 
-## 🔄 3. PLC Scan Cycle
+## 3. PLC Scan Cycle
 
 ### 3.1 The Three-Phase Cycle
 
@@ -151,7 +151,7 @@ With a 5ms scan time, any input pulse shorter than 5ms may be missed completely 
 
 ---
 
-## ⚡ 4. NO/NC Contacts & Fail-Safe Wiring
+## 4. NO/NC Contacts & Fail-Safe Wiring
 
 ### 4.1 Normally Open (NO) vs. Normally Closed (NC)
 
@@ -172,7 +172,7 @@ With a 5ms scan time, any input pulse shorter than 5ms may be missed completely 
 
 ---
 
-## 🔌 5. Ladder Logic Programming
+## 5. Ladder Logic Programming
 
 ### 5.1 Anatomy of a Ladder Rung
 
@@ -241,7 +241,7 @@ Sets its associated bit TRUE when rung has power flow; FALSE otherwise.
 
 ---
 
-## 💡 6. Motor Start/Stop with Seal-In Circuit
+## 6. Motor Start/Stop with Seal-In Circuit
 
 ### 6.1 Concept
 
@@ -278,7 +278,7 @@ Motor_Run := (Start_PB OR Motor_Run) AND NOT Stop_PB;
 
 ---
 
-## 🔄 7. Forward/Reverse Interlock (Stretch Project)
+## 7. Forward/Reverse Interlock (Stretch Project)
 
 ### 7.1 Design Requirements
 
@@ -317,7 +317,7 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 
 ---
 
-## 📝 Day 1 Assessment Tasks
+## Day 1 Assessment Tasks
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
@@ -336,7 +336,7 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 
 ---
 
-## 📂 Day 1 Files
+## Day 1 Files
 
 | File | Description |
 |:---|:---|

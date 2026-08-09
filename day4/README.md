@@ -1,25 +1,25 @@
-# 📕 Day 4 — Advanced Instructions: Sequencers, Data Blocks & Reusable Code
+# Day 4 - Advanced Instructions: Sequencers, Data Blocks & Reusable Code
 
-> **"Production-grade PLC code: structured, reusable, and maintainable"**
+> "Production-grade PLC code: structured, reusable, and maintainable"
 
 **Duration**: 7 Hours | **Format**: 40% Lecture/Demo + 60% Hands-On Lab
 **Prerequisite**: Day 3 — Analog I/O, Scaling & Data Processing
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 4, you will be able to:
-- ✅ Design and use Data Blocks with structured variable types
-- ✅ Process arrays of I/O values using FOR/WHILE loops in Structured Text
-- ✅ Implement a multi-step industrial sequencer using CASE statements
-- ✅ Use shift registers (BSL/BSR) for conveyor product-tracking buffers
-- ✅ Write reusable Function Blocks (FBs) with instance data for multi-motor systems
-- ✅ Build an 8-step batch process sequencer with step timers and fault recovery
+- Design and use Data Blocks with structured variable types
+- Process arrays of I/O values using FOR/WHILE loops in Structured Text
+- Implement a multi-step industrial sequencer using CASE statements
+- Use shift registers (BSL/BSR) for conveyor product-tracking buffers
+- Write reusable Function Blocks (FBs) with instance data for multi-motor systems
+- Build an 8-step batch process sequencer with step timers and fault recovery
 
 ---
 
-## 🗄️ 1. Data Blocks & Structured Variables
+## 1. Data Blocks & Structured Variables
 
 ### 1.1 Why Data Blocks?
 
@@ -74,7 +74,7 @@ END_FOR;
 
 ---
 
-## 🔁 2. Loops in Structured Text
+## 2. Loops in Structured Text
 
 ### 2.1 FOR Loop — Bounded Iteration
 
@@ -112,7 +112,7 @@ END_IF;
 
 ---
 
-## 📋 3. Sequencer Design — CASE Statement Pattern
+## 3. Sequencer Design - CASE Statement Pattern
 
 ### 3.1 Why Use a State Machine/Sequencer?
 
@@ -230,7 +230,7 @@ END_PROGRAM
 
 ---
 
-## 📦 4. Shift Register — Conveyor Product Tracking
+## 4. Shift Register - Conveyor Product Tracking
 
 ### 4.1 Application
 
@@ -266,7 +266,7 @@ KickerSolenoid := ProductBits[5];
 
 ---
 
-## 🔧 5. Reusable Function Blocks
+## 5. Reusable Function Blocks
 
 ### 5.1 FC vs. FB
 
@@ -358,7 +358,7 @@ MixerMotor(
 
 ---
 
-## 📝 Day 4 Assessment Tasks
+## Day 4 Assessment Tasks
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
@@ -372,7 +372,7 @@ MixerMotor(
 
 ---
 
-## 📂 Day 4 Files
+## Day 4 Files
 
 | File | Description |
 |:---|:---|

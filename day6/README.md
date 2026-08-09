@@ -1,25 +1,25 @@
-# 🎓 Day 6 — Capstone Project: Automated Conveyor Sorting System
+# Day 6 - Capstone Project: Automated Conveyor Sorting System
 
-> **"A complete industrial automation project from I/O list to commissioning"**
+> "A complete industrial automation project from I/O list to commissioning"
 
 **Duration**: 7 Hours | **Format**: 20% Design + 80% Build/Test/Document
 **Prerequisite**: Days 1–5
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 By the end of Day 6 capstone, you will have demonstrated:
-- ✅ End-to-end project delivery: requirements → I/O list → program → HMI → test → documentation
-- ✅ Modular FB-based program architecture for maintainability
-- ✅ Integration of digital sensing, analog scaling, VFD control, HMI, and alarm management
-- ✅ Fail-safe E-stop architecture (hardwired + software interlock)
-- ✅ Systematic commissioning: point-to-point I/O test → logic dry-run → live production test
-- ✅ Technical documentation to industry standard
+- End-to-end project delivery: requirements -> I/O list -> program -> HMI -> test -> documentation
+- Modular FB-based program architecture for maintainability
+- Integration of digital sensing, analog scaling, VFD control, HMI, and alarm management
+- Fail-safe E-stop architecture (hardwired + software interlock)
+- Systematic commissioning: point-to-point I/O test -> logic dry-run -> live production test
+- Technical documentation to industry standard
 
 ---
 
-## 🏭 1. System Overview
+## 1. System Overview
 
 ### 1.1 Conveyor Sorting System Description
 
@@ -62,7 +62,7 @@ Conveyor Speed ◄────────────── AO %QW64 (4-20mA to
 
 ---
 
-## 📋 2. I/O List (As-Built)
+## 2. I/O List (As-Built)
 
 | Tag Name | Address | Type | Signal | Field Device | Notes |
 |:---|:---|:---|:---|:---|:---|
@@ -80,7 +80,7 @@ Conveyor Speed ◄────────────── AO %QW64 (4-20mA to
 
 ---
 
-## 💻 3. Program Architecture
+## 3. Program Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -105,7 +105,7 @@ Conveyor Speed ◄────────────── AO %QW64 (4-20mA to
 
 ---
 
-## 💡 4. Core Program Logic
+## 4. Core Program Logic
 
 ### 4.1 Sorting State Machine (Conveyor Shift Register)
 
@@ -205,7 +205,7 @@ Tower_Red   := EStop_Latched OR VFD_Fault_FB;
 
 ---
 
-## 🧪 5. Commissioning Procedure
+## 5. Commissioning Procedure
 
 ### Phase 1: Point-to-Point I/O Verification
 
@@ -240,7 +240,7 @@ Tower_Red   := EStop_Latched OR VFD_Fault_FB;
 
 ---
 
-## 📄 6. Project Documentation
+## 6. Project Documentation
 
 ### 6.1 I/O List
 > See [I/O List table above](#-2-io-list-as-built) — this is the as-built reference.
@@ -265,7 +265,7 @@ Tower_Red   := EStop_Latched OR VFD_Fault_FB;
 
 ---
 
-## 📝 Capstone Assessment Rubric
+## Capstone Assessment Rubric
 
 | Criteria | Weight | Marks Available |
 |:---|:---|:---|
@@ -280,7 +280,7 @@ Tower_Red   := EStop_Latched OR VFD_Fault_FB;
 
 ---
 
-## 📂 Day 6 Files
+## Day 6 Files
 
 | File | Description |
 |:---|:---|
