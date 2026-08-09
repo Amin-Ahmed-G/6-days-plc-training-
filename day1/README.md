@@ -341,9 +341,13 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 | File | Description |
 |:---|:---|
 | [`README.md`](README.md) | This document - Day 1 complete reference |
+| [`Day1_PLC_Training.pptx`](Day1_PLC_Training.pptx) | Day 1 presentation slides (PLC Foundations & Hardware) |
+| [`Day1_PLC_Training.pdf`](Day1_PLC_Training.pdf) | Day 1 presentation slides PDF export |
+| [`Day1_Full_Guide.pdf`](Day1_Full_Guide.pdf) | Day 1 complete training guide PDF |
 | [`Motor.project`](Motor.project) | CODESYS project: Motor forward-reverse seal-in (built and simulated) |
 | [`example.project`](example.project) | CODESYS project: Day 1 logic practice example |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 1 ladder diagrams (ASCII + descriptions) |
 | [`Motor_SealIn_Circuit.st`](Motor_SealIn_Circuit.st) | Structured Text source code |
 | [`Day1_Foundations_Teaching_Material.md`](Day1_Foundations_Teaching_Material.md) | Full instructor session notes |
+| [`day1_tasks_solutions.pdf`](day1_tasks_solutions.pdf) | Day 1 Tasks and Solutions PDF |
 | [`Day1_Tasks_and_Solutions.md`](Day1_Tasks_and_Solutions.md) | All tasks with full solutions |

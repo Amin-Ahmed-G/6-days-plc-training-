@@ -391,10 +391,15 @@ END_CASE;
 | File | Description |
 |:---|:---|
 | [`README.md`](README.md) | This document - Day 2 complete reference |
+| [`Day2_Timers_Counters_Beginner_36slides.pptx`](Day2_Timers_Counters_Beginner_36slides.pptx) | Day 2 presentation slides (36 slides on Timers & Counters) |
+| [`Day2_Timers_Counters_Troubleshooting.pptx`](Day2_Timers_Counters_Troubleshooting.pptx) | Day 2 presentation slides (Troubleshooting & Fault Triage) |
 | [`CTU.project`](CTU.project) | CODESYS project: CTU counter simulation |
 | [`triggers.project`](triggers.project) | CODESYS project: Edge-trigger (R_TRIG/F_TRIG) simulation |
 | [`Traffic_Light.project`](Traffic_Light.project) | CODESYS project: Traffic light controller simulation |
 | [`Traffic_Light_v2.project`](Traffic_Light_v2.project) | CODESYS project: Traffic light v2 (pedestrian interrupt revision) |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 2 ladder diagrams |
 | [`Day2_Timers_Counters_Troubleshooting_Teaching_Material.md`](Day2_Timers_Counters_Troubleshooting_Teaching_Material.md) | Full instructor session notes |
+| [`Day2_Learning_Content.pdf`](Day2_Learning_Content.pdf) | Day 2 Learning Content PDF |
+| [`Day2_Teaching_Material_Expanded.pdf`](Day2_Teaching_Material_Expanded.pdf) | Day 2 Teaching Material Expanded PDF |
+| [`day2_tasks_solutions.pdf`](day2_tasks_solutions.pdf) | Day 2 Tasks and Solutions PDF |
 | [`Traffic_Light_Controller.st`](Traffic_Light_Controller.st) | Traffic Light ST source code |

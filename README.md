@@ -170,6 +170,18 @@ Upon completion of this training program, participants demonstrate competency in
 
 ---
 
+## Course Resources & Presentations
+
+| File | Description |
+|:---|:---|
+| [`Presentation.pptx`](Presentation.pptx) | Master Course PowerPoint Presentation |
+| [`PLC_Syllabus.pdf`](PLC_Syllabus.pdf) | Official PLC Training Syllabus PDF |
+| [`PLC_Trainer_Guide.pdf`](PLC_Trainer_Guide.pdf) | Complete PLC Trainer Guide PDF |
+| [`SYLLABUS.md`](SYLLABUS.md) | Detailed 42-hour curriculum markdown document |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Program authors and contributor roles |
+
+---
+
 ## Reference Standards
 
 - **IEC 61131-3**: International Standard for PLC programming languages
