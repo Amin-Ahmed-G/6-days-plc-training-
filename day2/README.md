@@ -360,6 +360,19 @@ CASE TrafficState OF
 END_CASE;
 ```
 
+### 4.4 CODESYS Ladder Logic Implementation — 3-Phase Traffic Light Controller
+
+![CODESYS Traffic Light Controller Ladder Logic](images/traffic_light_ladder.png)
+
+**Ladder Diagram Explanation**:
+- **Rung 2**: `Run` AND NOT `TON_Yellow.Q` triggers the `TON_Red` timer (10s preset).
+- **Rung 3**: `Run` AND NOT `TON_Red.Q` energizes the `Red` light coil.
+- **Rung 4**: `TON_Red.Q` triggers `TON_Yellow1` transition timer (3s preset).
+- **Rung 5**: `TON_Yellow1.Q` triggers the `TON_Green` timer (10s preset).
+- **Rung 6**: `TON_Yellow1.Q` AND NOT `TON_Green.Q` energizes the `Green` light coil.
+- **Rung 7**: `TON_Green.Q` triggers `TON_Yellow` transition timer (3s preset).
+- **Rung 8**: Dual-branch rung energizes the `Yellow` light coil during Red-to-Green and Green-to-Red transitions.
+
 ---
 
 ## Day 2 Assessment Tasks (Tasks 1-17)
@@ -399,6 +412,7 @@ END_CASE;
 | [`Traffic_Light_v2.project`](Traffic_Light_v2.project) | CODESYS project: Traffic light v2 (pedestrian interrupt revision) |
 | [`Traffic_Light_with_ped_button.project`](Traffic_Light_with_ped_button.project) | CODESYS project: Traffic light with pedestrian push-button |
 | [`conveyor_day2.project`](conveyor_day2.project) | CODESYS project: Conveyor belt logic simulation |
+| [`images/traffic_light_ladder.png`](images/traffic_light_ladder.png) | CODESYS Ladder Diagram screenshot (Traffic Light 3-Phase timers & coils) |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 2 ladder diagrams |
 | [`Day2_Timers_Counters_Troubleshooting_Teaching_Material.md`](Day2_Timers_Counters_Troubleshooting_Teaching_Material.md) | Full instructor session notes |
 | [`Day2_Learning_Content.pdf`](Day2_Learning_Content.pdf) | Day 2 Learning Content PDF |
