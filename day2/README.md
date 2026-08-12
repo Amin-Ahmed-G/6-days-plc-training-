@@ -397,6 +397,8 @@ END_CASE;
 | [`triggers.project`](triggers.project) | CODESYS project: Edge-trigger (R_TRIG/F_TRIG) simulation |
 | [`Traffic_Light.project`](Traffic_Light.project) | CODESYS project: Traffic light controller simulation |
 | [`Traffic_Light_v2.project`](Traffic_Light_v2.project) | CODESYS project: Traffic light v2 (pedestrian interrupt revision) |
+| [`Traffic_Light_with_ped_button.project`](Traffic_Light_with_ped_button.project) | CODESYS project: Traffic light with pedestrian push-button |
+| [`conveyor_day2.project`](conveyor_day2.project) | CODESYS project: Conveyor belt logic simulation |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 2 ladder diagrams |
 | [`Day2_Timers_Counters_Troubleshooting_Teaching_Material.md`](Day2_Timers_Counters_Troubleshooting_Teaching_Material.md) | Full instructor session notes |
 | [`Day2_Learning_Content.pdf`](Day2_Learning_Content.pdf) | Day 2 Learning Content PDF |

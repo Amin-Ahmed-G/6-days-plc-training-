@@ -345,6 +345,8 @@ Rev_Run := (Rev_PB OR Rev_Run) AND NOT Stop_PB AND NOT Fwd_Run;
 | [`Day1_PLC_Training.pdf`](Day1_PLC_Training.pdf) | Day 1 presentation slides PDF export |
 | [`Day1_Full_Guide.pdf`](Day1_Full_Guide.pdf) | Day 1 complete training guide PDF |
 | [`Motor.project`](Motor.project) | CODESYS project: Motor forward-reverse seal-in (built and simulated) |
+| [`Day1_electrical_interlocking.project`](Day1_electrical_interlocking.project) | CODESYS project: Electrical interlocking motor circuit |
+| [`Simple_motor_forward_reverse.project`](Simple_motor_forward_reverse.project) | CODESYS project: Simple forward/reverse motor function |
 | [`example.project`](example.project) | CODESYS project: Day 1 logic practice example |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 1 ladder diagrams (ASCII + descriptions) |
 | [`Motor_SealIn_Circuit.st`](Motor_SealIn_Circuit.st) | Structured Text source code |

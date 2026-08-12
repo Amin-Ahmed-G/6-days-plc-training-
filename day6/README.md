@@ -284,7 +284,9 @@ Tower_Red   := EStop_Latched OR VFD_Fault_FB;
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 6 complete reference & project spec |
+| [`README.md`](README.md) | This document - Day 6 complete reference & project spec |
+| [`conveyor_sorting_system.project`](conveyor_sorting_system.project) | CODESYS project: Capstone Conveyor Sorting System simulation |
 | [`Conveyor_Sorting_System.st`](Conveyor_Sorting_System.st) | Complete capstone project ST source code |
-| [`IO_List.md`](IO_List.md) | Detailed I/O register with addresses, types, and notes |
+| [`Project_PLC_Training.pdf`](Project_PLC_Training.pdf) | Capstone Project Specification PDF |
+| [`Assigned_Projects_PLC_Training.pdf`](Assigned_Projects_PLC_Training.pdf) | Assigned Training Projects Specification PDF |
 | [`Commissioning_Checklist.md`](Commissioning_Checklist.md) | Point-to-point I/O test sheet and sign-off |
