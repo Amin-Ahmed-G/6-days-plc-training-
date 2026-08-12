@@ -349,6 +349,16 @@ HighTempOut := HighTempAlarm;
 END_PROGRAM
 ```
 
+### 5.6 CODESYS Ladder Logic Implementation — Temperature & Alarm Control
+
+![CODESYS Temperature Monitoring Ladder Logic](images/temperature_alarm_ladder.png)
+
+**Ladder Diagram Explanation**:
+- **Rung 1**: Evaluates `Temp > HighSP` using a Greater-Than (`GT`) block. When temperature exceeds high setpoint, Fan is set `(S)` to begin cooling.
+- **Rung 2**: Evaluates `Temp < LowSP` using a Less-Than (`LT`) block. When temperature drops below low setpoint, Fan is reset `(R)`.
+- **Rung 3**: Evaluates `Temp > HighSP` using a `GT` block to set Alarm `(S)`.
+- **Rung 4**: Evaluates `Temp < LowSP` using an `LT` block to reset Alarm `(R)`.
+
 ---
 
 ## Day 3 Assessment Tasks
@@ -374,6 +384,7 @@ END_PROGRAM
 |:---|:---|
 | [`README.md`](README.md) | This document - Day 3 complete reference |
 | [`temperature.project`](temperature.project) | CODESYS project: Temperature monitoring system simulation |
+| [`images/temperature_alarm_ladder.png`](images/temperature_alarm_ladder.png) | CODESYS Ladder Diagram screenshot (Temperature & Alarm Set/Reset rungs) |
 | [`Ladder_Diagrams.md`](Ladder_Diagrams.md) | All Day 3 ladder diagrams |
 | [`Day3_Analog_and_Data_Teaching_Material.md`](Day3_Analog_and_Data_Teaching_Material.md) | Full instructor session notes |
 | [`Temperature_Monitor.st`](Temperature_Monitor.st) | Temperature monitoring system ST source code |
