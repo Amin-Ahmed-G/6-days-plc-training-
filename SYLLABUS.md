@@ -23,7 +23,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 1 - PLC Foundations & Basic Ladder Logic
+## [Day 1 - PLC Foundations & Basic Ladder Logic](day1/README.md)
 **Duration**: 7 Hours | **Format**: 60% Lecture/Demo + 40% Hands-On Lab
 
 ### Session 1: Introduction to PLCs (1.5 hrs)
@@ -83,7 +83,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 2 - Timers, Counters & Fault Diagnosis
+## [Day 2 - Timers, Counters & Fault Diagnosis](day2/README.md)
 **Duration**: 7 Hours | **Format**: 50% Lecture/Demo + 50% Hands-On Lab
 
 ### Session 1: TON and TOF Timers (2 hrs)
@@ -136,7 +136,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 3 - Analog I/O, Scaling & Data Processing
+## [Day 3 - Analog I/O, Scaling & Data Processing](day3/README.md)
 **Duration**: 7 Hours | **Format**: 45% Lecture/Demo + 55% Hands-On Lab
 
 ### Session 1: Analog Signals - Theory (1.5 hrs)
@@ -186,7 +186,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 4 - Advanced Instructions: Sequencers, Data Blocks & Reusable Code
+## [Day 4 - Advanced Instructions: Sequencers, Data Blocks & Reusable Code](day4/README.md)
 **Duration**: 7 Hours | **Format**: 40% Lecture/Demo + 60% Hands-On Lab
 
 ### Session 1: Data Blocks & Structured Variables (1.5 hrs)
@@ -224,7 +224,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 5 - HMI Design, VFD Integration & PID Control
+## [Day 5 - HMI Design, VFD Integration & PID Control](day5/README.md)
 **Duration**: 7 Hours | **Format**: 40% Lecture/Demo + 60% Hands-On Lab
 
 ### Session 1: HMI Design Fundamentals (2 hrs)
@@ -269,7 +269,7 @@ Upon successful completion of this program, participants will be able to:
 
 ---
 
-## Day 6 - Capstone Project: Automated Conveyor Sorting System
+## [Day 6 - Capstone Project: Automated Conveyor Sorting System](day6/README.md)
 **Duration**: 7 Hours | **Format**: 20% Design + 80% Build/Test/Document
 
 ### Phase 1: System Design (1 hr)

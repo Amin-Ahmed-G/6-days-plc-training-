@@ -48,7 +48,7 @@
 
 ## Day-by-Day Syllabus
 
-### [Day 1 - PLC Foundations & Basic Ladder Logic](day1/)
+### [Day 1 - PLC Foundations & Basic Ladder Logic](day1/README.md)
 > "From relay panels to stored-program industrial computers"
 
 - PLC hardware architecture (CPU, I/O modules, power supply, backplane)
@@ -64,7 +64,7 @@
 
 ---
 
-### [Day 2 - Timers, Counters & Troubleshooting](day2/)
+### [Day 2 - Timers, Counters & Troubleshooting](day2/README.md)
 > "Time-based and count-based industrial control, plus reading a live PLC"
 
 - TON (Timer On-Delay), TOF (Timer Off-Delay), RTO (Retentive Timer) with timing diagrams
@@ -78,7 +78,7 @@
 
 ---
 
-### [Day 3 - Analog I/O, Scaling & Data Processing](day3/)
+### [Day 3 - Analog I/O, Scaling & Data Processing](day3/README.md)
 > "Reading the physical world: temperature, pressure, level - in engineering units"
 
 - 4-20 mA current loop signal theory and live-zero justification
@@ -95,7 +95,7 @@
 
 ---
 
-### [Day 4 - Advanced Instructions: Sequencers, Math & Data Blocks](day4/)
+### [Day 4 - Advanced Instructions: Sequencers, Math & Data Blocks](day4/README.md)
 > "Production-grade PLC code: structured, reusable, and maintainable"
 
 - Data Block (DB) design and structured variable organization
@@ -111,7 +111,7 @@
 
 ---
 
-### [Day 5 - HMI, VFD Communication & PID Control](day5/)
+### [Day 5 - HMI, VFD Communication & PID Control](day5/README.md)
 > "Closing the loop: operator interfaces, variable speed drives, and process control"
 
 - HMI tag binding: mapping PLC memory to HMI screen objects
@@ -126,7 +126,7 @@
 
 ---
 
-### [Day 6 - Capstone: Automated Conveyor Sorting System](day6/)
+### [Day 6 - Capstone: Automated Conveyor Sorting System](day6/README.md)
 > "A complete industrial automation project from I/O list to commissioning"
 
 - Full system requirements analysis and I/O list creation
