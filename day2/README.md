@@ -407,6 +407,7 @@ END_CASE;
 | [`Day2_Timers_Counters_Beginner_36slides.pptx`](Day2_Timers_Counters_Beginner_36slides.pptx) | Day 2 presentation slides (36 slides on Timers & Counters) |
 | [`Day2_Timers_Counters_Troubleshooting.pptx`](Day2_Timers_Counters_Troubleshooting.pptx) | Day 2 presentation slides (Troubleshooting & Fault Triage) |
 | [`CTU.project`](CTU.project) | CODESYS project: CTU counter simulation |
+| [`timer_st.project`](timer_st.project) | CODESYS project: Timer function in Structured Text |
 | [`triggers.project`](triggers.project) | CODESYS project: Edge-trigger (R_TRIG/F_TRIG) simulation |
 | [`Traffic_Light.project`](Traffic_Light.project) | CODESYS project: Traffic light controller simulation |
 | [`Traffic_Light_v2.project`](Traffic_Light_v2.project) | CODESYS project: Traffic light v2 (pedestrian interrupt revision) |

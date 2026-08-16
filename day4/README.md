@@ -362,13 +362,13 @@ MixerMotor(
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
-| Task 1 | Create a STRUCT for a pump with: running, fault, speed, run-hours | ⭐⭐ Intermediate |
-| Task 2 | Use FOR loop to scale 8 analog inputs to engineering units | ⭐⭐ Intermediate |
-| Task 3 | Implement a 6-step fill-mix-heat-transfer-drain-clean sequencer | ⭐⭐⭐ Advanced |
-| Task 4 | Add step-timeout fault detection to the sequencer | ⭐⭐⭐ Advanced |
-| Task 5 | Build a 10-zone conveyor shift register in ST | ⭐⭐⭐ Advanced |
-| Task 6 | Write a Motor_Control FB and instantiate 3 motors | ⭐⭐⭐ Advanced |
-| Task 7 | Add RunHours accumulation inside Motor_Control FB using RTO | ⭐⭐⭐ Advanced |
+| Task 1 | Create a STRUCT for a pump with: running, fault, speed, run-hours | Intermediate |
+| Task 2 | Use FOR loop to scale 8 analog inputs to engineering units | Intermediate |
+| Task 3 | Implement a 6-step fill-mix-heat-transfer-drain-clean sequencer | Advanced |
+| Task 4 | Add step-timeout fault detection to the sequencer | Advanced |
+| Task 5 | Build a 10-zone conveyor shift register in ST | Advanced |
+| Task 6 | Write a Motor_Control FB and instantiate 3 motors | Advanced |
+| Task 7 | Add RunHours accumulation inside Motor_Control FB using RTO | Advanced |
 
 ---
 
@@ -376,7 +376,12 @@ MixerMotor(
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 4 complete reference |
+| [`README.md`](README.md) | This document - Day 4 complete reference |
+| [`sys_time_and_date.project`](sys_time_and_date.project) | CODESYS project: System time and date function simulation |
+| [`PLC-DAY-4.pdf`](PLC-DAY-4.pdf) | Day 4 Presentation Slides & Learning Content PDF |
+| [`Day4_Colored.pdf`](Day4_Colored.pdf) | Day 4 Colored Reference PDF |
+| [`Day4_Learning_Content.pdf`](Day4_Learning_Content.pdf) | Day 4 Learning Content PDF |
+| [`Day4_PLC_Training.pdf`](Day4_PLC_Training.pdf) | Day 4 Training Overview PDF |
 | [`Batch_Sequencer.st`](Batch_Sequencer.st) | 8-Step Batch Sequencer ST source code |
 | [`Motor_Control_FB.st`](Motor_Control_FB.st) | Reusable Motor Control Function Block |
 | [`Conveyor_Shift_Register.st`](Conveyor_Shift_Register.st) | 10-zone shift register tracking logic |

@@ -313,14 +313,14 @@ VFD_Speed_Raw := REAL_TO_INT(PumpSpeed_pct / 100.0 * 27648.0);
 
 | Task | Description | Difficulty |
 |:---|:---|:---|
-| Task 1 | Build HMI screen with Start/Stop, speed display, alarm indicator | ⭐⭐ Intermediate |
-| Task 2 | Configure alarm with 3 severity levels on HMI | ⭐⭐ Intermediate |
-| Task 3 | Wire VFD digital I/O (Run/Stop/Fault) to PLC I/O | ⭐⭐ Intermediate |
-| Task 4 | Configure VFD analog speed reference from PLC AO | ⭐⭐⭐ Advanced |
-| Task 5 | Explain effect of increasing P gain on a step response | ⭐⭐ Intermediate |
-| Task 6 | Explain integral windup and implement anti-windup clamping | ⭐⭐⭐ Advanced |
-| Task 7 | Build complete pump level control system with PID and HMI | ⭐⭐⭐ Advanced |
-| Task 8 | Add dry-run protection and high-level overflow alarm | ⭐⭐⭐ Advanced |
+| Task 1 | Build HMI screen with Start/Stop, speed display, alarm indicator | Intermediate |
+| Task 2 | Configure alarm with 3 severity levels on HMI | Intermediate |
+| Task 3 | Wire VFD digital I/O (Run/Stop/Fault) to PLC I/O | Intermediate |
+| Task 4 | Configure VFD analog speed reference from PLC AO | Advanced |
+| Task 5 | Explain effect of increasing P gain on a step response | Intermediate |
+| Task 6 | Explain integral windup and implement anti-windup clamping | Advanced |
+| Task 7 | Build complete pump level control system with PID and HMI | Advanced |
+| Task 8 | Add dry-run protection and high-level overflow alarm | Advanced |
 
 ---
 
@@ -328,6 +328,9 @@ VFD_Speed_Raw := REAL_TO_INT(PumpSpeed_pct / 100.0 * 27648.0);
 
 | File | Description |
 |:---|:---|
-| [`README.md`](README.md) | This document — Day 5 complete reference |
+| [`README.md`](README.md) | This document - Day 5 complete reference |
+| [`PLC-DAY-5.pdf`](PLC-DAY-5.pdf) | Day 5 Presentation Slides & Learning Content PDF |
+| [`Day5_Colored.pdf`](Day5_Colored.pdf) | Day 5 Colored Reference PDF |
+| [`Day5_PLC_Training.pdf`](Day5_PLC_Training.pdf) | Day 5 Training Overview PDF |
 | [`Pump_Level_Control.st`](Pump_Level_Control.st) | PID pump control ST source code |
 | [`VFD_IO_Wiring_Guide.md`](VFD_IO_Wiring_Guide.md) | Step-by-step VFD wiring and parameter setup |
