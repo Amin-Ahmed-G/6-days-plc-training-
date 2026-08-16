@@ -8,9 +8,9 @@ This project exists thanks to the people who designed, programmed, and documente
 
 | Contributor | GitHub Profile | Role |
 |:---|:---|:---|
-| **A.M Jafrein** | [@Jafrein](https://github.com/Jafrein) | PLC Engineer & Trainer |
-| **M Vaishnavi** | [@robo-maker-glitch](https://github.com/robo-maker-glitch) | PLC Engineer & Trainer |
-| **Amin Ahmed G** | [@Amin-Ahmed-G](https://github.com/Amin-Ahmed-G) | PLC Engineer & Trainer |
+| **A.M Jafrein** | [github.com/Jafrein](https://github.com/Jafrein) | PLC Engineer & Trainer |
+| **M Vaishnavi** | [github.com/robo-maker-glitch](https://github.com/robo-maker-glitch) | PLC Engineer & Trainer |
+| **Amin Ahmed G** | [github.com/Amin-Ahmed-G](https://github.com/Amin-Ahmed-G) | PLC Engineer & Trainer |
 
 ---
 
