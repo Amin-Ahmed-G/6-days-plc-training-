@@ -195,3 +195,4 @@ Upon completion of this training program, participants demonstrate competency in
 
 This repository is maintained for educational and professional development purposes.
 All code examples are written to IEC 61131-3 standard and may be adapted for any compliant PLC platform.
+ 
