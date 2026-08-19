@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project 1 — Smart Conveyor Sorting System — CODESYS LD</title>
+<style>
+  :root{
+    --bg:#1e1e1e;
+    --panel:#252526;
+    --rail:#d4d4d4;
+    --wire:#4ec9b0;
+    --wire-off:#6a6a6a;
+    --contact:#dcdcdc;
+    --tagblue:#4fc1ff;
+    --comment:#9a9a9a;
+    --coil:#dcdcdc;
+    --fb-fill:#1a2b3c;
+    --fb-border:#4fc1ff;
+    --netlabel:#c586c0;
+    --accent:#ce9178;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#12181f;
+    font-family:'Consolas','Courier New',monospace;
+    color:#d4d4d4;
+    padding:24px;
+  }
+  .titlebar{
+    background:linear-gradient(180deg,#2d2d30,#232326);
+    border:1px solid #3c3c3c;
+    border-radius:6px 6px 0 0;
+    padding:10px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .titlebar h1{font-size:15px;margin:0;color:#e8e8e8;font-weight:600;letter-spacing:.3px;}
+  .titlebar span{font-size:12px;color:#7d8590;}
+  .editor{
+    background:var(--panel);
+    border:1px solid #3c3c3c;
+    border-top:none;
+    padding:10px;
+    overflow-x:auto;
+  }
+  .io-table, .st-code{
+    background:var(--panel);
+    border:1px solid #3c3c3c;
+    border-top:none;
+    padding:18px;
+  }
+  h2.section{
+    color:#e8e8e8;
+    font-size:14px;
+    border-left:4px solid var(--accent);
+    padding-left:10px;
+    margin:0 0 12px 0;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.5px;
+    margin-bottom:20px;
+  }
+  th{
+    background:#2d2d30;
+    color:var(--tagblue);
+    text-align:left;
+    padding:6px 10px;
+    border:1px solid #3c3c3c;
+  }
+  td{
+    padding:6px 10px;
+    border:1px solid #333;
+    color:#cfcfcf;
+  }
+  tr:nth-child(even){background:#20232a;}
+  .cat-INPUT{color:#4ec9b0;}
+  .cat-OUTPUT{color:#ce9178;}
+  .cat-MEMORY{color:#dcdcaa;}
+  .cat-TIMER{color:#4fc1ff;}
+  pre{
+    background:#181818;
+    border:1px solid #333;
+    border-radius:4px;
+    padding:16px;
+    font-size:12.5px;
+    line-height:1.55;
+    overflow-x:auto;
+    color:#d4d4d4;
+    margin:0 0 22px 0;
+  }
+  .kw{color:#569cd6;} .fb{color:#4ec9b0;} .cm{color:#6a9955;} .tag{color:#9cdcfe;} .num{color:#b5cea8;}
+  .footer-note{font-size:11px;color:#6a6a6a;padding:10px 4px 0;}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <h1>Project 1 / Smart Conveyor Sorting System.project — POU: PLC_PRG (LD)</h1>
+  <span>CODESYS V3.5 · Ladder Diagram · Online: FALSE</span>
+</div>
+
+<div class="editor">
+<svg viewBox="0 0 1000 1180" xmlns="http://www.w3.org/2000/svg" font-family="Consolas, monospace">
+  <rect x="0" y="0" width="1000" height="1180" fill="#1e1e1e"/>
+
+  <!-- Power rails -->
+  <line x1="70" y1="40" x2="70" y2="1150" stroke="var(--rail)" stroke-width="4"/>
+  <line x1="930" y1="40" x2="930" y2="1150" stroke="var(--rail)" stroke-width="4"/>
+
+  <!-- ============ NETWORK 1 : START / STOP SEAL-IN ============ -->
+  <g>
+    <rect x="70" y="40" width="860" height="170" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 1</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Start/Stop seal-in — latches System Running with E-Stop &amp; Stop interlocks</text>
+
+    <!-- main rung line -->
+    <line x1="70" y1="145" x2="210" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <!-- branch node A vertical -->
+    <line x1="210" y1="95" x2="210" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <!-- top branch: Start_PB -->
+    <line x1="210" y1="95" x2="350" y2="95" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="77" x2="265" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="77" x2="291" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="65" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Start_PB</text>
+      <text x="278" y="126" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.0</text>
+    </g>
+    <!-- bottom branch (seal-in): M_SystemRunning -->
+    <g>
+      <line x1="265" y1="127" x2="265" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="127" x2="291" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="182" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="196" fill="var(--comment)" font-size="10" text-anchor="middle">seal-in contact</text>
+    </g>
+    <line x1="350" y1="95" x2="350" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="210" y1="145" x2="350" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <!-- node B onward -->
+    <line x1="350" y1="145" x2="430" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- Stop_PB NC contact -->
+    <g>
+      <line x1="455" y1="127" x2="455" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="481" y1="127" x2="481" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="450" y1="163" x2="486" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="468" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Stop_PB</text>
+      <text x="468" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.1  (N.C. field wiring)</text>
+    </g>
+    <line x1="430" y1="145" x2="455" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="481" y1="145" x2="580" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- EStop NC contact -->
+    <g>
+      <line x1="605" y1="127" x2="605" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="631" y1="127" x2="631" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="600" y1="163" x2="636" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="618" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_EStop_OK</text>
+      <text x="618" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.2  (1 = healthy)</text>
+    </g>
+    <line x1="580" y1="145" x2="605" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="631" y1="145" x2="800" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- Coil M_SystemRunning -->
+    <g>
+      <path d="M 793 127 A 18 18 0 0 0 793 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 127 A 18 18 0 0 1 817 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="805" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="817" y1="145" x2="930" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ NETWORK 2 : CONVEYOR MOTOR RUN ============ -->
+  <g transform="translate(0,170)">
+    <rect x="70" y="40" width="860" height="120" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 2</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Drive the conveyor belt motor whenever the system is running</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="291" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_ConveyorMotor</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.0</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ NETWORK 3 : REJECT ITEM DETECTION (SET) ============ -->
+  <g transform="translate(0,290)">
+    <rect x="70" y="40" width="860" height="140" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 3</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Photo-eye + height sensor together identify an oversize/reject item</text>
+
+    <line x1="70" y1="135" x2="240" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="117" x2="265" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="117" x2="291" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Photo_Sensor</text>
+      <text x="278" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.3</text>
+    </g>
+    <line x1="291" y1="135" x2="400" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="117" x2="425" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="117" x2="451" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="438" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Height_Sensor</text>
+      <text x="438" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.4  (1 = oversize)</text>
+    </g>
+    <line x1="451" y1="135" x2="793" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- SET coil -->
+    <g>
+      <path d="M 793 117 A 18 18 0 0 0 793 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 117 A 18 18 0 0 1 817 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="140" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">S</text>
+      <text x="805" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_RejectFlag</text>
+      <text x="805" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1  (SET)</text>
+    </g>
+    <line x1="817" y1="135" x2="930" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ NETWORK 4 : PUSHER DELAY TIMER ============ -->
+  <g transform="translate(0,430)">
+    <rect x="70" y="40" width="860" height="160" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 4</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Delay = travel time from photo-eye to pusher station (belt-speed dependent)</text>
+
+    <line x1="70" y1="150" x2="240" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="132" x2="265" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="132" x2="291" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="120" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_RejectFlag</text>
+      <text x="278" y="185" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1</text>
+    </g>
+    <line x1="291" y1="150" x2="410" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- TON FB -->
+    <rect x="410" y="95" width="130" height="110" fill="var(--fb-fill)" stroke="var(--fb-border)" stroke-width="2"/>
+    <text x="475" y="88" fill="var(--fb-border)" font-size="13" text-anchor="middle" font-weight="bold">TON_Pusher</text>
+    <text x="475" y="112" fill="#e8e8e8" font-size="12" text-anchor="middle" font-weight="bold">TON</text>
+    <text x="420" y="140" fill="#dcdcdc" font-size="11">IN</text>
+    <text x="530" y="140" fill="#dcdcdc" font-size="11" text-anchor="end">Q</text>
+    <text x="420" y="188" fill="#dcdcdc" font-size="11">PT</text>
+    <text x="530" y="188" fill="#dcdcdc" font-size="11" text-anchor="end">ET</text>
+    <text x="475" y="220" fill="var(--comment)" font-size="10" text-anchor="middle">PT := T#2s</text>
+    <line x1="410" y1="150" x2="410" y2="130" stroke="var(--wire)" stroke-width="2"/>
+
+    <line x1="540" y1="130" x2="793" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 112 A 18 18 0 0 0 793 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 112 A 18 18 0 0 1 817 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="100" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_PusherTmrDone</text>
+      <text x="805" y="165" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2  (Q output)</text>
+    </g>
+    <line x1="817" y1="130" x2="930" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ NETWORK 5 : PUSHER ACTUATION ============ -->
+  <g transform="translate(0,600)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 5</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Fire the pneumatic pusher solenoid to divert the reject item off the line</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_PusherTmrDone</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2</text>
+    </g>
+    <line x1="291" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_PusherSolenoid</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.1</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- ============ NETWORK 6 : REJECT FLAG RESET ============ -->
+  <g transform="translate(0,720)">
+    <rect x="70" y="40" width="860" height="140" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 6</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Pusher fully retracted → clear the reject flag, ready for next item</text>
+
+    <line x1="70" y1="135" x2="240" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="117" x2="265" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="117" x2="291" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Pusher_Retract_LS</text>
+      <text x="278" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.5  (limit switch)</text>
+    </g>
+    <line x1="291" y1="135" x2="793" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 117 A 18 18 0 0 0 793 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 117 A 18 18 0 0 1 817 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="140" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">R</text>
+      <text x="805" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_RejectFlag</text>
+      <text x="805" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1  (RESET)</text>
+    </g>
+    <line x1="817" y1="135" x2="930" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+</svg>
+</div>
+
+<div class="io-table">
+  <h2 class="section">I/O &amp; Tag Table</h2>
+  <table>
+    <tr><th>Category</th><th>Tag Name</th><th>Address</th><th>Type</th><th>Description</th></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Start_PB</td><td>%IX0.0</td><td>BOOL</td><td>Start pushbutton, N.O.</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Stop_PB</td><td>%IX0.1</td><td>BOOL</td><td>Stop pushbutton, wired N.C. (energized = 1)</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_EStop_OK</td><td>%IX0.2</td><td>BOOL</td><td>E-Stop chain healthy (1 = not tripped)</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Photo_Sensor</td><td>%IX0.3</td><td>BOOL</td><td>Through-beam sensor, item present at entry</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Height_Sensor</td><td>%IX0.4</td><td>BOOL</td><td>Height gate — 1 = item exceeds pass height (reject)</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Pusher_Retract_LS</td><td>%IX0.5</td><td>BOOL</td><td>Pusher cylinder home/retracted limit switch</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_ConveyorMotor</td><td>%QX0.0</td><td>BOOL</td><td>Conveyor drive motor contactor</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_PusherSolenoid</td><td>%QX0.1</td><td>BOOL</td><td>Pneumatic pusher solenoid valve</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_SystemRunning</td><td>%MX0.0</td><td>BOOL</td><td>Latched system-run state</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_RejectFlag</td><td>%MX0.1</td><td>BOOL</td><td>Set/Reset flag: item classified as reject</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_PusherTmrDone</td><td>%MX0.2</td><td>BOOL</td><td>TON_Pusher.Q — travel-delay elapsed</td></tr>
+    <tr><td class="cat-TIMER">TIMER</td><td>TON_Pusher</td><td>—</td><td>TON</td><td>PT := T#2s (photo-eye → pusher station transit time)</td></tr>
+  </table>
+</div>
+
+<div class="st-code">
+  <h2 class="section">Structured Text (ST) Reference</h2>
+<pre><span class="cm">// ============================================================
+// PLC_PRG — Smart Conveyor Sorting System
+// ============================================================</span>
+
+<span class="kw">PROGRAM</span> PLC_PRG
+<span class="kw">VAR</span>
+    M_SystemRunning   : <span class="kw">BOOL</span>;
+    M_RejectFlag      : <span class="kw">BOOL</span>;
+    M_PusherTmrDone   : <span class="kw">BOOL</span>;
+    TON_Pusher        : <span class="fb">TON</span>;
+<span class="kw">END_VAR</span>
+
+<span class="cm">// Network 1: Start/Stop seal-in</span>
+M_SystemRunning := (I_Start_PB <span class="kw">OR</span> M_SystemRunning)
+                    <span class="kw">AND</span> I_Stop_PB
+                    <span class="kw">AND</span> I_EStop_OK;
+
+<span class="cm">// Network 2: Conveyor motor</span>
+Q_ConveyorMotor := M_SystemRunning;
+
+<span class="cm">// Network 3: Reject classification (SET, edge-triggered by sensors)</span>
+<span class="kw">IF</span> I_Photo_Sensor <span class="kw">AND</span> I_Height_Sensor <span class="kw">THEN</span>
+    M_RejectFlag := <span class="kw">TRUE</span>;
+<span class="kw">END_IF</span>
+
+<span class="cm">// Network 4: Pusher travel-delay timer</span>
+TON_Pusher(IN := M_RejectFlag, PT := T#2s);
+M_PusherTmrDone := TON_Pusher.Q;
+
+<span class="cm">// Network 5: Pusher actuation</span>
+Q_PusherSolenoid := M_PusherTmrDone;
+
+<span class="cm">// Network 6: Reject flag reset on pusher retract</span>
+<span class="kw">IF</span> I_Pusher_Retract_LS <span class="kw">THEN</span>
+    M_RejectFlag := <span class="kw">FALSE</span>;
+<span class="kw">END_IF</span>
+</pre>
+  <div class="footer-note">Project 1 of 6 — Smart Conveyor Sorting System. Type "next" for Project 2: Automatic Bottle Filling Plant.</div>
+</div>
+
+</body>
+</html>

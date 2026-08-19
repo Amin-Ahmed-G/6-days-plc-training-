@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project 2 — Automatic Bottle Filling Plant — CODESYS LD</title>
+<style>
+  :root{
+    --bg:#1e1e1e; --panel:#252526; --rail:#d4d4d4; --wire:#4ec9b0;
+    --tagblue:#4fc1ff; --comment:#9a9a9a; --fb-fill:#1a2b3c; --fb-border:#4fc1ff;
+    --netlabel:#c586c0; --accent:#ce9178;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#12181f;font-family:'Consolas','Courier New',monospace;color:#d4d4d4;padding:24px;}
+  .titlebar{background:linear-gradient(180deg,#2d2d30,#232326);border:1px solid #3c3c3c;border-radius:6px 6px 0 0;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .titlebar h1{font-size:15px;margin:0;color:#e8e8e8;font-weight:600;letter-spacing:.3px;}
+  .titlebar span{font-size:12px;color:#7d8590;}
+  .editor{background:var(--panel);border:1px solid #3c3c3c;border-top:none;padding:10px;overflow-x:auto;}
+  .io-table, .st-code{background:var(--panel);border:1px solid #3c3c3c;border-top:none;padding:18px;}
+  h2.section{color:#e8e8e8;font-size:14px;border-left:4px solid var(--accent);padding-left:10px;margin:0 0 12px 0;text-transform:uppercase;letter-spacing:1px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:20px;}
+  th{background:#2d2d30;color:var(--tagblue);text-align:left;padding:6px 10px;border:1px solid #3c3c3c;}
+  td{padding:6px 10px;border:1px solid #333;color:#cfcfcf;}
+  tr:nth-child(even){background:#20232a;}
+  .cat-INPUT{color:#4ec9b0;} .cat-OUTPUT{color:#ce9178;} .cat-MEMORY{color:#dcdcaa;} .cat-TIMER{color:#4fc1ff;}
+  pre{background:#181818;border:1px solid #333;border-radius:4px;padding:16px;font-size:12.5px;line-height:1.55;overflow-x:auto;color:#d4d4d4;margin:0 0 22px 0;}
+  .kw{color:#569cd6;} .fb{color:#4ec9b0;} .cm{color:#6a9955;}
+  .footer-note{font-size:11px;color:#6a6a6a;padding:10px 4px 0;}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <h1>Project 2 / Automatic Bottle Filling Plant.project — POU: PLC_PRG (LD)</h1>
+  <span>CODESYS V3.5 · Ladder Diagram · Online: FALSE</span>
+</div>
+
+<div class="editor">
+<svg viewBox="0 0 1000 1210" xmlns="http://www.w3.org/2000/svg" font-family="Consolas, monospace">
+  <rect x="0" y="0" width="1000" height="1210" fill="#1e1e1e"/>
+  <line x1="70" y1="40" x2="70" y2="1180" stroke="var(--rail)" stroke-width="4"/>
+  <line x1="930" y1="40" x2="930" y2="1180" stroke="var(--rail)" stroke-width="4"/>
+
+  <!-- N1: Start/Stop seal-in -->
+  <g>
+    <rect x="70" y="40" width="860" height="170" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 1</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Start/Stop seal-in with E-Stop interlock</text>
+
+    <line x1="70" y1="145" x2="210" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="210" y1="95" x2="210" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="210" y1="95" x2="350" y2="95" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="77" x2="265" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="77" x2="291" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="65" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Start_PB</text>
+      <text x="278" y="126" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.0</text>
+    </g>
+    <g>
+      <line x1="265" y1="127" x2="265" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="127" x2="291" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="182" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="196" fill="var(--comment)" font-size="10" text-anchor="middle">seal-in contact</text>
+    </g>
+    <line x1="350" y1="95" x2="350" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="210" y1="145" x2="350" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="350" y1="145" x2="430" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <line x1="455" y1="127" x2="455" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="481" y1="127" x2="481" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="450" y1="163" x2="486" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="468" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Stop_PB</text>
+      <text x="468" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.1 (N.C.)</text>
+    </g>
+    <line x1="430" y1="145" x2="455" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="481" y1="145" x2="580" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <line x1="605" y1="127" x2="605" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="631" y1="127" x2="631" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="600" y1="163" x2="636" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="618" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_EStop_OK</text>
+      <text x="618" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.2</text>
+    </g>
+    <line x1="580" y1="145" x2="605" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="631" y1="145" x2="800" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <path d="M 793 127 A 18 18 0 0 0 793 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 127 A 18 18 0 0 1 817 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="805" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="817" y1="145" x2="930" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N2: Conveyor Motor Run -->
+  <g transform="translate(0,170)">
+    <rect x="70" y="40" width="860" height="120" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 2</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Conveyor runs unless a bottle is currently in the fill station</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="291" y1="115" x2="400" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="97" x2="425" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="97" x2="451" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="420" y1="133" x2="456" y2="97" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="438" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_BottleInPosition</text>
+      <text x="438" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1 (N.C.)</text>
+    </g>
+    <line x1="451" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_ConveyorMotor</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.0</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N3: Bottle Position Latch (SET) -->
+  <g transform="translate(0,290)">
+    <rect x="70" y="40" width="860" height="140" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 3</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Photo-eye at fill station latches bottle-present flag, halting the conveyor</text>
+
+    <line x1="70" y1="135" x2="240" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="117" x2="265" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="117" x2="291" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Bottle_Position_Sensor</text>
+      <text x="278" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.3</text>
+    </g>
+    <line x1="291" y1="135" x2="793" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 117 A 18 18 0 0 0 793 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 117 A 18 18 0 0 1 817 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="140" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">S</text>
+      <text x="805" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_BottleInPosition</text>
+      <text x="805" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1 (SET)</text>
+    </g>
+    <line x1="817" y1="135" x2="930" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N4: Fill Timer -->
+  <g transform="translate(0,430)">
+    <rect x="70" y="40" width="860" height="160" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 4</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Fill duration calibrated to bottle volume / nozzle flow rate</text>
+
+    <line x1="70" y1="150" x2="240" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="132" x2="265" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="132" x2="291" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="120" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_BottleInPosition</text>
+      <text x="278" y="185" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1</text>
+    </g>
+    <line x1="291" y1="150" x2="410" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <rect x="410" y="95" width="130" height="110" fill="var(--fb-fill)" stroke="var(--fb-border)" stroke-width="2"/>
+    <text x="475" y="88" fill="var(--fb-border)" font-size="13" text-anchor="middle" font-weight="bold">TON_Fill</text>
+    <text x="475" y="112" fill="#e8e8e8" font-size="12" text-anchor="middle" font-weight="bold">TON</text>
+    <text x="420" y="140" fill="#dcdcdc" font-size="11">IN</text>
+    <text x="530" y="140" fill="#dcdcdc" font-size="11" text-anchor="end">Q</text>
+    <text x="420" y="188" fill="#dcdcdc" font-size="11">PT</text>
+    <text x="530" y="188" fill="#dcdcdc" font-size="11" text-anchor="end">ET</text>
+    <text x="475" y="220" fill="var(--comment)" font-size="10" text-anchor="middle">PT := T#5s</text>
+    <line x1="410" y1="150" x2="410" y2="130" stroke="var(--wire)" stroke-width="2"/>
+
+    <line x1="540" y1="130" x2="793" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 112 A 18 18 0 0 0 793 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 112 A 18 18 0 0 1 817 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="100" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_FillComplete</text>
+      <text x="805" y="165" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2 (Q output)</text>
+    </g>
+    <line x1="817" y1="130" x2="930" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N5: Fill Valve Output -->
+  <g transform="translate(0,600)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 5</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Fill valve energized while bottle is present and fill timer not yet done</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_BottleInPosition</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1</text>
+    </g>
+    <line x1="291" y1="115" x2="400" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="97" x2="425" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="97" x2="451" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="420" y1="133" x2="456" y2="97" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="438" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_FillComplete</text>
+      <text x="438" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2 (N.C.)</text>
+    </g>
+    <line x1="451" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_FillValve</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.1</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N6: Reset BottleInPosition -->
+  <g transform="translate(0,720)">
+    <rect x="70" y="40" width="860" height="120" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 6</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Bottle has departed the station (sensor cleared) after a completed fill</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="260" y1="133" x2="296" y2="97" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Bottle_Position_Sensor</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.3 (N.C.)</text>
+    </g>
+    <line x1="291" y1="115" x2="400" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="97" x2="425" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="97" x2="451" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="438" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_FillComplete</text>
+      <text x="438" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2</text>
+    </g>
+    <line x1="451" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="90" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">R</text>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle" opacity="0"> </text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">M_BottleInPosition (RESET)</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N7: Reset FillComplete -->
+  <g transform="translate(0,840)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 7</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Clear fill-complete flag on same condition, ready for next bottle</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="260" y1="133" x2="296" y2="97" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Bottle_Position_Sensor</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.3 (N.C.)</text>
+    </g>
+    <line x1="291" y1="115" x2="400" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="97" x2="425" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="97" x2="451" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="438" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_FillComplete</text>
+      <text x="438" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2</text>
+    </g>
+    <line x1="451" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="90" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">R</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">M_FillComplete (RESET)</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N8: Bottle Counter -->
+  <g transform="translate(0,960)">
+    <rect x="70" y="40" width="860" height="190" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 8</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Count bottles filled; batch-complete lamp when preset count reached</text>
+
+    <line x1="70" y1="140" x2="240" y2="140" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="122" x2="265" y2="158" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="122" x2="291" y2="158" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="110" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_FillComplete</text>
+      <text x="278" y="175" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2 — CU (rising edge)</text>
+    </g>
+    <line x1="291" y1="140" x2="360" y2="140" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="360" y1="140" x2="360" y2="115" stroke="var(--wire)" stroke-width="2"/>
+
+    <line x1="70" y1="215" x2="360" y2="215" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="197" x2="265" y2="233" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="197" x2="291" y2="233" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="188" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Reset_Count_PB</text>
+      <text x="278" y="245" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.6 — R</text>
+    </g>
+    <line x1="360" y1="215" x2="360" y2="185" stroke="var(--wire)" stroke-width="2"/>
+
+    <rect x="360" y="95" width="150" height="130" fill="var(--fb-fill)" stroke="var(--fb-border)" stroke-width="2"/>
+    <text x="435" y="88" fill="var(--fb-border)" font-size="13" text-anchor="middle" font-weight="bold">CTU_BottleCount</text>
+    <text x="435" y="112" fill="#e8e8e8" font-size="12" text-anchor="middle" font-weight="bold">CTU</text>
+    <text x="370" y="140" fill="#dcdcdc" font-size="11">CU</text>
+    <text x="500" y="140" fill="#dcdcdc" font-size="11" text-anchor="end">Q</text>
+    <text x="370" y="165" fill="#dcdcdc" font-size="11">R</text>
+    <text x="500" y="165" fill="#dcdcdc" font-size="11" text-anchor="end">CV</text>
+    <text x="370" y="190" fill="#dcdcdc" font-size="11">PV</text>
+    <text x="435" y="242" fill="var(--comment)" font-size="10" text-anchor="middle">PV := 50 (bottles/batch)</text>
+
+    <line x1="510" y1="140" x2="793" y2="140" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 122 A 18 18 0 0 0 793 158" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 122 A 18 18 0 0 1 817 158" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="110" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_BatchCompleteLamp</text>
+      <text x="805" y="175" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.2</text>
+    </g>
+    <line x1="817" y1="140" x2="930" y2="140" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+</svg>
+</div>
+
+<div class="io-table">
+  <h2 class="section">I/O &amp; Tag Table</h2>
+  <table>
+    <tr><th>Category</th><th>Tag Name</th><th>Address</th><th>Type</th><th>Description</th></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Start_PB</td><td>%IX0.0</td><td>BOOL</td><td>Start pushbutton, N.O.</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Stop_PB</td><td>%IX0.1</td><td>BOOL</td><td>Stop pushbutton, wired N.C.</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_EStop_OK</td><td>%IX0.2</td><td>BOOL</td><td>E-Stop chain healthy (1 = not tripped)</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Bottle_Position_Sensor</td><td>%IX0.3</td><td>BOOL</td><td>Bottle present at fill nozzle</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Reset_Count_PB</td><td>%IX0.6</td><td>BOOL</td><td>Manual batch counter reset</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_ConveyorMotor</td><td>%QX0.0</td><td>BOOL</td><td>Conveyor drive motor contactor</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_FillValve</td><td>%QX0.1</td><td>BOOL</td><td>Fill nozzle solenoid valve</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_BatchCompleteLamp</td><td>%QX0.2</td><td>BOOL</td><td>Batch-count-reached indicator lamp</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_SystemRunning</td><td>%MX0.0</td><td>BOOL</td><td>Latched system-run state</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_BottleInPosition</td><td>%MX0.1</td><td>BOOL</td><td>Set/Reset: bottle latched at fill station</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_FillComplete</td><td>%MX0.2</td><td>BOOL</td><td>TON_Fill.Q — fill duration elapsed</td></tr>
+    <tr><td class="cat-TIMER">TIMER</td><td>TON_Fill</td><td>—</td><td>TON</td><td>PT := T#5s (fill nozzle open duration)</td></tr>
+    <tr><td class="cat-TIMER">COUNTER</td><td>CTU_BottleCount</td><td>—</td><td>CTU</td><td>PV := 50 (bottles per batch)</td></tr>
+  </table>
+</div>
+
+<div class="st-code">
+  <h2 class="section">Structured Text (ST) Reference</h2>
+<pre><span class="cm">// ============================================================
+// PLC_PRG — Automatic Bottle Filling Plant
+// ============================================================</span>
+
+<span class="kw">PROGRAM</span> PLC_PRG
+<span class="kw">VAR</span>
+    M_SystemRunning     : <span class="kw">BOOL</span>;
+    M_BottleInPosition  : <span class="kw">BOOL</span>;
+    M_FillComplete      : <span class="kw">BOOL</span>;
+    TON_Fill            : <span class="fb">TON</span>;
+    CTU_BottleCount     : <span class="fb">CTU</span>;
+<span class="kw">END_VAR</span>
+
+<span class="cm">// Network 1: Start/Stop seal-in</span>
+M_SystemRunning := (I_Start_PB <span class="kw">OR</span> M_SystemRunning)
+                    <span class="kw">AND</span> I_Stop_PB
+                    <span class="kw">AND</span> I_EStop_OK;
+
+<span class="cm">// Network 2: Conveyor runs unless a bottle is at the station</span>
+Q_ConveyorMotor := M_SystemRunning <span class="kw">AND NOT</span> M_BottleInPosition;
+
+<span class="cm">// Network 3: Latch bottle-in-position on photo-eye</span>
+<span class="kw">IF</span> I_Bottle_Position_Sensor <span class="kw">THEN</span>
+    M_BottleInPosition := <span class="kw">TRUE</span>;
+<span class="kw">END_IF</span>
+
+<span class="cm">// Network 4: Fill duration timer</span>
+TON_Fill(IN := M_BottleInPosition, PT := T#5s);
+M_FillComplete := TON_Fill.Q;
+
+<span class="cm">// Network 5: Fill valve output</span>
+Q_FillValve := M_BottleInPosition <span class="kw">AND NOT</span> M_FillComplete;
+
+<span class="cm">// Networks 6 &amp; 7: Clear flags once the filled bottle departs</span>
+<span class="kw">IF NOT</span> I_Bottle_Position_Sensor <span class="kw">AND</span> M_FillComplete <span class="kw">THEN</span>
+    M_BottleInPosition := <span class="kw">FALSE</span>;
+    M_FillComplete      := <span class="kw">FALSE</span>;
+<span class="kw">END_IF</span>
+
+<span class="cm">// Network 8: Batch counter</span>
+CTU_BottleCount(CU := M_FillComplete, R := I_Reset_Count_PB, PV := 50);
+Q_BatchCompleteLamp := CTU_BottleCount.Q;
+</pre>
+  <div class="footer-note">Project 2 of 6 — Automatic Bottle Filling Plant. Type "next" for Project 3: Batch Mixing Plant.</div>
+</div>
+
+</body>
+</html>

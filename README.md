@@ -38,7 +38,9 @@
 ├── day3/       <- Analog I/O, 4-20mA Scaling, Data Types, Temperature Control
 ├── day4/       <- Advanced Instructions: Sequencers, Math, Data Blocks, Shift Registers
 ├── day5/       <- HMI Design, VFD Communication, PID Control, Alarm Management
-├── day6/       <- Capstone Project: Fully Automated Conveyor Sorting System
+├── day6/       <- Capstone Projects: Industrial Automation Systems
+├── diagrams/   <- Interactive browser-based Ladder Logic diagram visualizers
+├── drafts/     <- Early scratchpads and recovered practice projects
 ├── CONTRIBUTORS.md
 ├── SYLLABUS.md <- Complete 42-hour curriculum with learning outcomes
 └── README.md

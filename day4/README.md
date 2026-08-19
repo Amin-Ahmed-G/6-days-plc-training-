@@ -377,6 +377,8 @@ MixerMotor(
 | File | Description |
 |:---|:---|
 | [`README.md`](README.md) | This document - Day 4 complete reference |
+| [`batch mixing.project`](batch%20mixing.project) | CODESYS project: Automated batch mixing plant simulation |
+| [`Batch mixing day 4.project`](Batch%20mixing%20day%204.project) | CODESYS project: 8-step recipe sequencing and valve control |
 | [`sys_time_and_date.project`](sys_time_and_date.project) | CODESYS project: System time and date function simulation |
 | [`PLC-DAY-4.pdf`](PLC-DAY-4.pdf) | Day 4 Presentation Slides & Learning Content PDF |
 | [`Day4_Colored.pdf`](Day4_Colored.pdf) | Day 4 Colored Reference PDF |

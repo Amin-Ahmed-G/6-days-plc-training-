@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project 4 — Automated Warehouse Conveyor — CODESYS LD</title>
+<style>
+  :root{
+    --bg:#1e1e1e; --panel:#252526; --rail:#d4d4d4; --wire:#4ec9b0;
+    --tagblue:#4fc1ff; --comment:#9a9a9a; --fb-fill:#1a2b3c; --fb-border:#4fc1ff;
+    --netlabel:#c586c0; --accent:#ce9178;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#12181f;font-family:'Consolas','Courier New',monospace;color:#d4d4d4;padding:24px;}
+  .titlebar{background:linear-gradient(180deg,#2d2d30,#232326);border:1px solid #3c3c3c;border-radius:6px 6px 0 0;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .titlebar h1{font-size:15px;margin:0;color:#e8e8e8;font-weight:600;letter-spacing:.3px;}
+  .titlebar span{font-size:12px;color:#7d8590;}
+  .editor{background:var(--panel);border:1px solid #3c3c3c;border-top:none;padding:10px;overflow-x:auto;}
+  .io-table, .st-code{background:var(--panel);border:1px solid #3c3c3c;border-top:none;padding:18px;}
+  h2.section{color:#e8e8e8;font-size:14px;border-left:4px solid var(--accent);padding-left:10px;margin:0 0 12px 0;text-transform:uppercase;letter-spacing:1px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:20px;}
+  th{background:#2d2d30;color:var(--tagblue);text-align:left;padding:6px 10px;border:1px solid #3c3c3c;}
+  td{padding:6px 10px;border:1px solid #333;color:#cfcfcf;}
+  tr:nth-child(even){background:#20232a;}
+  .cat-INPUT{color:#4ec9b0;} .cat-OUTPUT{color:#ce9178;} .cat-MEMORY{color:#dcdcaa;} .cat-TIMER{color:#4fc1ff;}
+  pre{background:#181818;border:1px solid #333;border-radius:4px;padding:16px;font-size:12.5px;line-height:1.55;overflow-x:auto;color:#d4d4d4;margin:0 0 22px 0;}
+  .kw{color:#569cd6;} .fb{color:#4ec9b0;} .cm{color:#6a9955;}
+  .footer-note{font-size:11px;color:#6a6a6a;padding:10px 4px 0;}
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <h1>Project 4 / Automated Warehouse Conveyor.project — POU: PLC_PRG (LD)</h1>
+  <span>CODESYS V3.5 · Ladder Diagram · Online: FALSE</span>
+</div>
+
+<div class="editor">
+<svg viewBox="0 0 1000 1300" xmlns="http://www.w3.org/2000/svg" font-family="Consolas, monospace">
+  <rect x="0" y="0" width="1000" height="1300" fill="#1e1e1e"/>
+  <line x1="70" y1="40" x2="70" y2="1270" stroke="var(--rail)" stroke-width="4"/>
+  <line x1="930" y1="40" x2="930" y2="1270" stroke="var(--rail)" stroke-width="4"/>
+
+  <!-- N1: Start/Stop Seal-in + Jam interlock -->
+  <g>
+    <rect x="70" y="40" width="860" height="170" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 1</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Start/Stop seal-in, gated by E-Stop health and jam alarm interlock</text>
+
+    <line x1="70" y1="145" x2="180" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="180" y1="95" x2="180" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="180" y1="95" x2="300" y2="95" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="228" y1="77" x2="228" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="254" y1="77" x2="254" y2="113" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="241" y="65" fill="var(--tagblue)" font-size="11" text-anchor="middle">I_Start_PB</text>
+      <text x="241" y="126" fill="var(--comment)" font-size="9" text-anchor="middle">%IX0.0</text>
+    </g>
+    <g>
+      <line x1="228" y1="127" x2="228" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="254" y1="127" x2="254" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="241" y="182" fill="var(--tagblue)" font-size="11" text-anchor="middle">M_SystemRunning</text>
+      <text x="241" y="196" fill="var(--comment)" font-size="9" text-anchor="middle">seal-in</text>
+    </g>
+    <line x1="300" y1="95" x2="300" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="180" y1="145" x2="300" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="300" y1="145" x2="360" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <line x1="385" y1="127" x2="385" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="411" y1="127" x2="411" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="380" y1="163" x2="416" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="398" y="112" fill="var(--tagblue)" font-size="11" text-anchor="middle">I_Stop_PB</text>
+      <text x="398" y="182" fill="var(--comment)" font-size="9" text-anchor="middle">%IX0.1 (N.C.)</text>
+    </g>
+    <line x1="360" y1="145" x2="385" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="411" y1="145" x2="475" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <line x1="500" y1="127" x2="500" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="526" y1="127" x2="526" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="495" y1="163" x2="531" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="513" y="112" fill="var(--tagblue)" font-size="11" text-anchor="middle">I_EStop_OK</text>
+      <text x="513" y="182" fill="var(--comment)" font-size="9" text-anchor="middle">%IX0.2</text>
+    </g>
+    <line x1="475" y1="145" x2="500" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="526" y1="145" x2="600" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <line x1="625" y1="127" x2="625" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="651" y1="127" x2="651" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="620" y1="163" x2="656" y2="127" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="638" y="112" fill="var(--tagblue)" font-size="11" text-anchor="middle">M_JamAlarm</text>
+      <text x="638" y="182" fill="var(--comment)" font-size="9" text-anchor="middle">%MX0.3 (N.C.)</text>
+    </g>
+    <line x1="600" y1="145" x2="625" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="651" y1="145" x2="800" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <g>
+      <path d="M 793 127 A 18 18 0 0 0 793 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 127 A 18 18 0 0 1 817 163" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="112" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="805" y="182" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="817" y1="145" x2="930" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N2: Zone 1 Motor (accumulation) -->
+  <g transform="translate(0,170)">
+    <rect x="70" y="40" width="860" height="120" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 2</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Zone 1 pauses (accumulates) whenever Zone 2 is already occupied</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="291" y1="115" x2="400" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="97" x2="425" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="97" x2="451" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="420" y1="133" x2="456" y2="97" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="438" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_Zone2Occupied</text>
+      <text x="438" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1 (N.C.)</text>
+    </g>
+    <line x1="451" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_Zone1Motor</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.0</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N3: Zone 2 Motor -->
+  <g transform="translate(0,290)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 3</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Zone 2 (discharge zone) runs continuously while system is running</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_SystemRunning</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.0</text>
+    </g>
+    <line x1="291" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_Zone2Motor</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.1</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N4: Zone2 Occupied Latch -->
+  <g transform="translate(0,410)">
+    <rect x="70" y="40" width="860" height="140" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 4</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Entry photo-eye of Zone 2 latches the occupied flag for accumulation logic</text>
+
+    <line x1="70" y1="135" x2="240" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="117" x2="265" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="117" x2="291" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Zone2_Entry_Sensor</text>
+      <text x="278" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.3</text>
+    </g>
+    <line x1="291" y1="135" x2="793" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 117 A 18 18 0 0 0 793 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 117 A 18 18 0 0 1 817 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="140" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">S</text>
+      <text x="805" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_Zone2Occupied</text>
+      <text x="805" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.1 (SET)</text>
+    </g>
+    <line x1="817" y1="135" x2="930" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N5: Zone2 Occupied Reset -->
+  <g transform="translate(0,550)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 5</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Exit photo-eye of Zone 2 clears the occupied flag, releasing Zone 1</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Zone2_Exit_Sensor</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.4</text>
+    </g>
+    <line x1="291" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="90" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">R</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">M_Zone2Occupied (RESET)</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N6: Diverter Arm Control -->
+  <g transform="translate(0,670)">
+    <rect x="70" y="40" width="860" height="140" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 6</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Carton present at diverter + bay-select switch routes it to Bay B</text>
+
+    <line x1="70" y1="135" x2="240" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="117" x2="265" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="117" x2="291" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Carton_At_Diverter</text>
+      <text x="278" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.5</text>
+    </g>
+    <line x1="291" y1="135" x2="400" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="425" y1="117" x2="425" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="451" y1="117" x2="451" y2="153" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="438" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Bay_Select_Switch</text>
+      <text x="438" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.6  (1 = Bay B)</text>
+    </g>
+    <line x1="451" y1="135" x2="793" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 117 A 18 18 0 0 0 793 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 117 A 18 18 0 0 1 817 153" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="105" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_DiverterArm</text>
+      <text x="805" y="170" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.2  (extend → Bay B)</text>
+    </g>
+    <line x1="817" y1="135" x2="930" y2="135" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N7: Jam Detection Timer -->
+  <g transform="translate(0,810)">
+    <rect x="70" y="40" width="860" height="160" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 7</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Carton held at Zone 1 entry with no exit transition beyond travel time = jam</text>
+
+    <line x1="70" y1="150" x2="240" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="132" x2="265" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="132" x2="291" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="120" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Zone1_Entry_Sensor</text>
+      <text x="278" y="185" fill="var(--comment)" font-size="10" text-anchor="middle">%IX0.7</text>
+    </g>
+    <line x1="291" y1="150" x2="360" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="385" y1="132" x2="385" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="411" y1="132" x2="411" y2="168" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="380" y1="168" x2="416" y2="132" stroke="#dcdcdc" stroke-width="2.5"/>
+      <text x="398" y="120" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Zone1_Exit_Sensor</text>
+      <text x="398" y="185" fill="var(--comment)" font-size="10" text-anchor="middle">%IX1.0 (N.C.)</text>
+    </g>
+    <line x1="411" y1="150" x2="460" y2="150" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <rect x="460" y="95" width="130" height="110" fill="var(--fb-fill)" stroke="var(--fb-border)" stroke-width="2"/>
+    <text x="525" y="88" fill="var(--fb-border)" font-size="13" text-anchor="middle" font-weight="bold">TON_JamDetect</text>
+    <text x="525" y="112" fill="#e8e8e8" font-size="12" text-anchor="middle" font-weight="bold">TON</text>
+    <text x="470" y="140" fill="#dcdcdc" font-size="11">IN</text>
+    <text x="580" y="140" fill="#dcdcdc" font-size="11" text-anchor="end">Q</text>
+    <text x="470" y="188" fill="#dcdcdc" font-size="11">PT</text>
+    <text x="580" y="188" fill="#dcdcdc" font-size="11" text-anchor="end">ET</text>
+    <text x="525" y="220" fill="var(--comment)" font-size="10" text-anchor="middle">PT := T#8s</text>
+    <line x1="460" y1="150" x2="460" y2="130" stroke="var(--wire)" stroke-width="2"/>
+
+    <line x1="590" y1="130" x2="793" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 112 A 18 18 0 0 0 793 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 112 A 18 18 0 0 1 817 148" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="100" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_JamTimerDone</text>
+      <text x="805" y="165" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2 (Q output)</text>
+    </g>
+    <line x1="817" y1="130" x2="930" y2="130" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N8: Jam Alarm Latch + Lamp (dual output branch) -->
+  <g transform="translate(0,970)">
+    <rect x="70" y="40" width="860" height="150" fill="#20242a"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 8</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Jam confirmed: latch the alarm flag and drive the stack-light simultaneously</text>
+
+    <line x1="70" y1="145" x2="240" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="127" x2="265" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="127" x2="291" y2="163" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="115" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_JamTimerDone</text>
+      <text x="278" y="180" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.2</text>
+    </g>
+    <line x1="291" y1="145" x2="620" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- split node -->
+    <line x1="620" y1="95" x2="620" y2="195" stroke="var(--wire)" stroke-width="2.5"/>
+    <!-- top branch: SET M_JamAlarm -->
+    <line x1="620" y1="95" x2="793" y2="95" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 77 A 18 18 0 0 0 793 113" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 77 A 18 18 0 0 1 817 113" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="99" fill="#dcdcaa" font-size="12" text-anchor="middle" font-weight="bold">S</text>
+      <text x="805" y="65" fill="var(--tagblue)" font-size="12" text-anchor="middle">M_JamAlarm</text>
+      <text x="805" y="128" fill="var(--comment)" font-size="10" text-anchor="middle">%MX0.3 (SET)</text>
+    </g>
+    <line x1="817" y1="95" x2="850" y2="95" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="850" y1="95" x2="850" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+
+    <!-- bottom branch: Q_AlarmLamp -->
+    <line x1="620" y1="195" x2="793" y2="195" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 177 A 18 18 0 0 0 793 213" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 177 A 18 18 0 0 1 817 213" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="165" fill="var(--tagblue)" font-size="12" text-anchor="middle">Q_AlarmLamp</text>
+      <text x="805" y="228" fill="var(--comment)" font-size="10" text-anchor="middle">%QX0.3</text>
+    </g>
+    <line x1="817" y1="195" x2="850" y2="195" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="850" y1="145" x2="850" y2="195" stroke="var(--wire)" stroke-width="2.5"/>
+    <line x1="850" y1="145" x2="930" y2="145" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+  <!-- N9: Jam Alarm Reset -->
+  <g transform="translate(0,1120)">
+    <rect x="70" y="40" width="860" height="120" fill="#232629"/>
+    <text x="80" y="62" fill="var(--netlabel)" font-size="13" font-weight="bold">Network 9</text>
+    <text x="165" y="62" fill="var(--comment)" font-size="12">// Maintenance manually clears the jam alarm once the blockage is removed</text>
+
+    <line x1="70" y1="115" x2="240" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <line x1="291" y1="97" x2="291" y2="133" stroke="#dcdcdc" stroke-width="3"/>
+      <text x="278" y="85" fill="var(--tagblue)" font-size="12" text-anchor="middle">I_Jam_Reset_PB</text>
+      <text x="278" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">%IX1.1</text>
+    </g>
+    <line x1="291" y1="115" x2="793" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+    <g>
+      <path d="M 793 97 A 18 18 0 0 0 793 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <path d="M 817 97 A 18 18 0 0 1 817 133" stroke="#dcdcdc" stroke-width="3" fill="none"/>
+      <text x="805" y="90" fill="#dcdcaa" font-size="13" text-anchor="middle" font-weight="bold">R</text>
+      <text x="805" y="150" fill="var(--comment)" font-size="10" text-anchor="middle">M_JamAlarm (RESET)</text>
+    </g>
+    <line x1="817" y1="115" x2="930" y2="115" stroke="var(--wire)" stroke-width="2.5"/>
+  </g>
+
+</svg>
+</div>
+
+<div class="io-table">
+  <h2 class="section">I/O &amp; Tag Table</h2>
+  <table>
+    <tr><th>Category</th><th>Tag Name</th><th>Address</th><th>Type</th><th>Description</th></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Start_PB</td><td>%IX0.0</td><td>BOOL</td><td>Start pushbutton, N.O.</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Stop_PB</td><td>%IX0.1</td><td>BOOL</td><td>Stop pushbutton, wired N.C.</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_EStop_OK</td><td>%IX0.2</td><td>BOOL</td><td>E-Stop chain healthy (1 = not tripped)</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Zone2_Entry_Sensor</td><td>%IX0.3</td><td>BOOL</td><td>Carton entering Zone 2 accumulation section</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Zone2_Exit_Sensor</td><td>%IX0.4</td><td>BOOL</td><td>Carton clearing Zone 2 toward the diverter</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Carton_At_Diverter</td><td>%IX0.5</td><td>BOOL</td><td>Carton present at the diverter station</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Bay_Select_Switch</td><td>%IX0.6</td><td>BOOL</td><td>Routing selector: 0 = Bay A, 1 = Bay B</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Zone1_Entry_Sensor</td><td>%IX0.7</td><td>BOOL</td><td>Carton entering Zone 1</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Zone1_Exit_Sensor</td><td>%IX1.0</td><td>BOOL</td><td>Carton clearing Zone 1</td></tr>
+    <tr><td class="cat-INPUT">INPUT</td><td>I_Jam_Reset_PB</td><td>%IX1.1</td><td>BOOL</td><td>Manual jam-alarm reset pushbutton</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_Zone1Motor</td><td>%QX0.0</td><td>BOOL</td><td>Zone 1 conveyor motor contactor</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_Zone2Motor</td><td>%QX0.1</td><td>BOOL</td><td>Zone 2 conveyor motor contactor</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_DiverterArm</td><td>%QX0.2</td><td>BOOL</td><td>Diverter pneumatic arm, extends toward Bay B</td></tr>
+    <tr><td class="cat-OUTPUT">OUTPUT</td><td>Q_AlarmLamp</td><td>%QX0.3</td><td>BOOL</td><td>Jam-condition stack light / alarm</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_SystemRunning</td><td>%MX0.0</td><td>BOOL</td><td>Latched system-run state</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_Zone2Occupied</td><td>%MX0.1</td><td>BOOL</td><td>Set/Reset: Zone 2 currently holds a carton</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_JamTimerDone</td><td>%MX0.2</td><td>BOOL</td><td>TON_JamDetect.Q — jam dwell time exceeded</td></tr>
+    <tr><td class="cat-MEMORY">MEMORY</td><td>M_JamAlarm</td><td>%MX0.3</td><td>BOOL</td><td>Set/Reset: latched jam alarm, stops the line</td></tr>
+    <tr><td class="cat-TIMER">TIMER</td><td>TON_JamDetect</td><td>—</td><td>TON</td><td>PT := T#8s (max carton dwell time in Zone 1)</td></tr>
+  </table>
+</div>
+
+<div class="st-code">
+  <h2 class="section">Structured Text (ST) Reference</h2>
+<pre><span class="cm">// ============================================================
+// PLC_PRG — Automated Warehouse Conveyor
+// ============================================================</span>
+
+<span class="kw">PROGRAM</span> PLC_PRG
+<span class="kw">VAR</span>
+    M_SystemRunning  : <span class="kw">BOOL</span>;
+    M_Zone2Occupied  : <span class="kw">BOOL</span>;
+    M_JamTimerDone   : <span class="kw">BOOL</span>;
+    M_JamAlarm       : <span class="kw">BOOL</span>;
+    TON_JamDetect    : <span class="fb">TON</span>;
+<span class="kw">END_VAR</span>
+
+<span class="cm">// Network 1: Start/Stop seal-in with jam-alarm interlock</span>
+M_SystemRunning := (I_Start_PB <span class="kw">OR</span> M_SystemRunning)
+                    <span class="kw">AND</span> I_Stop_PB
+                    <span class="kw">AND</span> I_EStop_OK
+                    <span class="kw">AND NOT</span> M_JamAlarm;
+
+<span class="cm">// Network 2: Zone 1 accumulation control</span>
+Q_Zone1Motor := M_SystemRunning <span class="kw">AND NOT</span> M_Zone2Occupied;
+
+<span class="cm">// Network 3: Zone 2 runs continuously</span>
+Q_Zone2Motor := M_SystemRunning;
+
+<span class="cm">// Network 4: Latch Zone 2 occupied on entry sensor</span>
+<span class="kw">IF</span> I_Zone2_Entry_Sensor <span class="kw">THEN</span>
+    M_Zone2Occupied := <span class="kw">TRUE</span>;
+<span class="kw">END_IF</span>
+
+<span class="cm">// Network 5: Clear Zone 2 occupied on exit sensor</span>
+<span class="kw">IF</span> I_Zone2_Exit_Sensor <span class="kw">THEN</span>
+    M_Zone2Occupied := <span class="kw">FALSE</span>;
+<span class="kw">END_IF</span>
+
+<span class="cm">// Network 6: Diverter arm routes to Bay B when switch selected</span>
+Q_DiverterArm := I_Carton_At_Diverter <span class="kw">AND</span> I_Bay_Select_Switch;
+
+<span class="cm">// Network 7: Jam detection — carton held past max dwell time</span>
+TON_JamDetect(IN := I_Zone1_Entry_Sensor <span class="kw">AND NOT</span> I_Zone1_Exit_Sensor, PT := T#8s);
+M_JamTimerDone := TON_JamDetect.Q;
+
+<span class="cm">// Network 8: Latch alarm flag and drive stack light together</span>
+<span class="kw">IF</span> M_JamTimerDone <span class="kw">THEN</span>
+    M_JamAlarm := <span class="kw">TRUE</span>;
+<span class="kw">END_IF</span>
+Q_AlarmLamp := M_JamAlarm;
+
+<span class="cm">// Network 9: Manual jam-alarm reset</span>
+<span class="kw">IF</span> I_Jam_Reset_PB <span class="kw">THEN</span>
+    M_JamAlarm := <span class="kw">FALSE</span>;
+<span class="kw">END_IF</span>
+</pre>
+  <div class="footer-note">Project 4 of 6 — Automated Warehouse Conveyor. Type "next" for Project 5: Multi-Floor Elevator Control.</div>
+</div>
+
+</body>
+</html>

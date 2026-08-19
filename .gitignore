@@ -1,0 +1,19 @@
+# Windows OS Files
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# CODESYS Temporary, Cache & User Options
+*.opt
+*.precompilecache
+*.simulation.*
+*.compileinfo
+*.bootinfo*
+*~*
+*.tmp
+*.bak
+*_project.precompilecache
+
+# Editor & IDE settings
+.vscode/
+.idea/
